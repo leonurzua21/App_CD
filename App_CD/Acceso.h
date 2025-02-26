@@ -2,6 +2,7 @@
 #include <string.h>
 #include <regex>	
 #include <iostream>
+#include "Registro.h"
 
 
 namespace AppCD {
@@ -44,6 +45,7 @@ namespace AppCD {
 	private: System::Windows::Forms::TextBox^ txbUser;
 	private: System::Windows::Forms::TextBox^ txbPass;
 	private: System::Windows::Forms::Button^ btnAcceder;
+	private: System::Windows::Forms::Button^ btnRegistro;
 	protected:
 
 
@@ -63,6 +65,7 @@ namespace AppCD {
 			this->txbUser = (gcnew System::Windows::Forms::TextBox());
 			this->txbPass = (gcnew System::Windows::Forms::TextBox());
 			this->btnAcceder = (gcnew System::Windows::Forms::Button());
+			this->btnRegistro = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// txbUser
@@ -89,11 +92,22 @@ namespace AppCD {
 			this->btnAcceder->UseVisualStyleBackColor = true;
 			this->btnAcceder->Click += gcnew System::EventHandler(this, &Acceso::btnAcceder_Click);
 			// 
+			// btnRegistro
+			// 
+			this->btnRegistro->Location = System::Drawing::Point(351, 293);
+			this->btnRegistro->Name = L"btnRegistro";
+			this->btnRegistro->Size = System::Drawing::Size(75, 23);
+			this->btnRegistro->TabIndex = 3;
+			this->btnRegistro->Text = L"Registrarse";
+			this->btnRegistro->UseVisualStyleBackColor = true;
+			this->btnRegistro->Click += gcnew System::EventHandler(this, &Acceso::btnRegistro_Click);
+			// 
 			// Acceso
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(463, 370);
+			this->Controls->Add(this->btnRegistro);
 			this->Controls->Add(this->btnAcceder);
 			this->Controls->Add(this->txbPass);
 			this->Controls->Add(this->txbUser);
@@ -108,22 +122,19 @@ namespace AppCD {
 		String^ User = txbUser->Text;
 		String^ Pass = txbPass->Text;
 
-		String^ patron_User = "^[0-9,A-z]{10}$";
-		String^ patron_Pass = "^[0-9,A-z]{9}([!#$%&.?¿]{0})$";
-
-		bool _if_exists(String^ User, String^ Pass);
-
-		///*Regex^ regexUser = gcnew Regex(patron_User);
-		//Regex^ regexUser = gcnew Regex(patron_Pass);*/
 		 
-		if (Regex::IsMatch (User,patron_User) && Regex::IsMatch (Pass,patron_Pass) && _if_exists(User,Pass)) //Compara la expresión regular con las cadenas de texto proporcionadas por el usuario
+		if (!String::IsNullOrEmpty(User) && !String::IsNullOrEmpty(Pass)) //Compara la expresión regular con las cadenas de texto proporcionadas por el usuario
 		{
 			MessageBox::Show("Bienvenido " + User);
 		}
 		else
 		{
-			MessageBox::Show("Revise usuario y contraseña de nuevo");
+			MessageBox::Show("Llene todos los campos");
 		}
 	}
-	};
+	private: System::Void btnRegistro_Click(System::Object^ sender, System::EventArgs^ e) {
+		AppCD::Registro^ form2 = gcnew AppCD::Registro();
+		form2->Show();
+	}
+};
 }

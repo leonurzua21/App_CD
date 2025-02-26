@@ -114,6 +114,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -121,9 +122,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Acceso.cpp" />
+    <ClCompile Include="Conexion.cpp" />
+    <ClCompile Include="Registro.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Acceso.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Conexion.h" />
+    <ClInclude Include="Registro.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -131,9 +138,9 @@
     <EmbeddedResource Include="Acceso.resx">
       <DependentUpon>Acceso.h</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
+    <EmbeddedResource Include="Registro.resx">
+      <DependentUpon>Registro.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
