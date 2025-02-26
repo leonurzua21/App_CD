@@ -27,10 +27,7 @@ protected:
 public:
     void Insertar(String^ nombre, String^ apellido, String^ UserName, String^ UserPass)
     {
-        if (cn == nullptr)
-        {
-            Conectar();
-        }
+        
 
         String^ enviardatos = "Insert into Usuario values (@nombre,@apellido,@usuario,@pass)";
         SqlCommand^ ejecutar = gcnew SqlCommand(enviardatos, cn);
