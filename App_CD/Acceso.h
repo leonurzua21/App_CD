@@ -3,6 +3,7 @@
 #include <regex>	
 #include <iostream>
 #include "Registro.h"
+#include "Consultar.h"
 
 
 namespace AppCD {
@@ -118,20 +119,30 @@ namespace AppCD {
 
 		}
 #pragma endregion
-	private: System::Void btnAcceder_Click(System::Object^ sender, System::EventArgs^ e) {		
+
+    private: System::Void btnAcceder_Click(System::Object^ sender, System::EventArgs^ e) {		
+
 		String^ User = txbUser->Text;
 		String^ Pass = txbPass->Text;
 
-		 
 		if (!String::IsNullOrEmpty(User) && !String::IsNullOrEmpty(Pass)) //Compara la expresión regular con las cadenas de texto proporcionadas por el usuario
 		{
-			MessageBox::Show("Bienvenido " + User);
+			if (Consultar::UserExists(User)) //Verfica Si el usuario existe en la BD
+			{
+				MessageBox::Show("Bienvenido " + User);
+				txbUser->Clear();
+				txbPass->Clear(); //Limpia los campos de texto
+			}
+			else
+			{
+				MessageBox::Show("Parece que no se ha registrado aun" + "\n" + "Complete el registro haciendo clic en el boton Registro");
+			}
 		}
 		else
 		{
-			MessageBox::Show("Llene todos los campos");
+			MessageBox::Show("Favor de llenar todos los campos");
 		}
-	}
+    }
 	private: System::Void btnRegistro_Click(System::Object^ sender, System::EventArgs^ e) {
 		AppCD::Registro^ form2 = gcnew AppCD::Registro();
 		form2->Show();

@@ -147,6 +147,10 @@ namespace AppCD {
 				conexion procesardatos;
 				procesardatos.Insertar(txbNombre->Text, txbApellido->Text, txbUserName->Text, txbUserPass->Text);
 				MessageBox::Show("Registro exitoso " + UserName  +"\n" + "Ya puede cerrar esta ventana ");
+				txbNombre->Clear();
+				txbApellido->Clear();
+				txbUserName->Clear();
+				txbUserPass->Clear(); //Limpia los campos de texto
 			}
 			else 
 			{

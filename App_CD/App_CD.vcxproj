@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="Acceso.cpp" />
     <ClCompile Include="Conexion.cpp" />
+    <ClCompile Include="Consultar.cpp" />
     <ClCompile Include="Registro.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +131,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Conexion.h" />
+    <ClInclude Include="Consultar.h" />
     <ClInclude Include="Registro.h">
       <FileType>CppForm</FileType>
     </ClInclude>
