@@ -1,5 +1,7 @@
 #pragma once
 #include "Comunicacion.h"
+#include <array>
+
 namespace AppCD {
 
 	using namespace System;
@@ -108,10 +110,10 @@ namespace AppCD {
 		}
 #pragma endregion
     private: System::Void cboPlaca_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {  
-       String^ Placa = (String^)cboPlaca->SelectedItem; // Utiliza SelectedItem en lugar de Text  
+		array<String^>^ desarrolladores = gcnew cli::array<String^> { "Arduino Uno","Arduino Leonardo"};
 
-       // Mostrar el valor seleccionado  
-       MessageBox::Show("Placa seleccionada: " + Placa);  
+        // Mostrar el valor seleccionado  
+        MessageBox::Show("Placa seleccionada: " + desarrolladores[0]);
     }
 	private: System::Void btnConectar_Click(System::Object^ sender, System::EventArgs^ e) {
 		Comunicacion^ objComunicacion = gcnew Comunicacion();

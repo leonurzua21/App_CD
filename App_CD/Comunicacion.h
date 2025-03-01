@@ -11,22 +11,77 @@ public:
 
 public:
 	void arduino()
-	{
-		SerialPort^ puerto = gcnew SerialPort("COM4");
+    {
+        // Obtener la lista de puertos COM disponibles en la computadora
+        array<String^> ^ puertosDisponibles = SerialPort::GetPortNames();
+
+        // Verificar si COM4 y COM5 están disponibles
+        bool puertoCOM4Disponible = Array::IndexOf(puertosDisponibles, "COM4") >= 0;
+        bool puertoCOM5Disponible = Array::IndexOf(puertosDisponibles, "COM5") >= 0;
+        bool puertoCOM6Disponible = Array::IndexOf(puertosDisponibles, "COM6") >= 0;
+        bool puertoCOM7Disponible = Array::IndexOf(puertosDisponibles, "COM7") >= 0;
+
+        // Crear objetos SerialPort
+        SerialPort^ puerto0 = gcnew SerialPort("COM4");
+        SerialPort^ puerto1 = gcnew SerialPort("COM5");
+        SerialPort^ puerto2 = gcnew SerialPort("COM6");
+        SerialPort^ puerto3 = gcnew SerialPort("COM7");
 
         try
         {
-            // Si el puerto no está abierto, intenta abrirlo
-            if (!puerto->IsOpen)
+            // Validar si ambos puertos están disponibles
+         if (puertoCOM4Disponible)
+         {
+         // Comprobar si el puerto COM4 no está abierto y abrirlo
+            if (!puerto0->IsOpen)
             {
-                puerto->Open();
-                MessageBox::Show("Conectado");
+                puerto0->Open();
+                MessageBox::Show("Conectado a COM4");
             }
-            else
+         }
+
+        // Validar si COM5 está disponible
+        if (puertoCOM5Disponible)
+        {
+            // Comprobar si el puerto COM5 no está abierto y abrirlo
+            if (!puerto1->IsOpen)
             {
-                MessageBox::Show("Ya está conectado");
+                puerto1->Open();
+                MessageBox::Show("Conectado a COM5");
             }
+            //else
+            //{
+            //    MessageBox::Show("No se realizo ninguna conexión");
+            //}
+            if (puertoCOM6Disponible)
+            {
+                // Comprobar si el puerto COM5 no está abierto y abrirlo
+                if (!puerto2->IsOpen)
+                {
+                    puerto2->Open();
+                    MessageBox::Show("Conectado a COM5");
+                }
+                else
+                {
+                    MessageBox::Show("No se realizo ninguna conexión");
+                }
+            }
+                if (puertoCOM7Disponible)
+                {
+                    // Comprobar si el puerto COM5 no está abierto y abrirlo
+                    if (!puerto3->IsOpen)
+                    {
+                        puerto3->Open();
+                        MessageBox::Show("Conectado a COM5");
+                    }
+                    else
+                    {
+                        MessageBox::Show("No se realizo ninguna conexión");
+                    }
+                }
         }
+       
+    }
         catch (UnauthorizedAccessException^ ex)
         {
             // Captura la excepción si no se tiene permiso para acceder al puerto
