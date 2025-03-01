@@ -25,7 +25,7 @@ public:
 
         bool conectado = false;
 
-        for each (SerialPort ^ puerto in puertos)
+        for each(SerialPort ^ puerto in puertos)
         {
             if (Array::IndexOf(puertosDisponibles, puerto->PortName) >= 0)
             {
@@ -64,4 +64,3 @@ public:
         }
     }
 };
-
