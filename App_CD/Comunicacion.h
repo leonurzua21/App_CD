@@ -53,32 +53,24 @@ public:
             //{
             //    MessageBox::Show("No se realizo ninguna conexión");
             //}
-            if (puertoCOM6Disponible)
-            {
-                // Comprobar si el puerto COM5 no está abierto y abrirlo
-                if (!puerto2->IsOpen)
-                {
-                    puerto2->Open();
-                    MessageBox::Show("Conectado a COM6");
-                }
-                else
-                {
-                    MessageBox::Show("No se realizo ninguna conexión");
-                }
             }
-                if (puertoCOM7Disponible)
-                {
-                    // Comprobar si el puerto COM5 no está abierto y abrirlo
-                    if (!puerto3->IsOpen)
-                    {
-                        puerto3->Open();
-                        MessageBox::Show("Conectado a COM7");
-                    }
-                    else
-                    {
-                        MessageBox::Show("No se realizo ninguna conexión");
-                    }
-                }
+        if (puertoCOM6Disponible)
+        {
+            // Comprobar si el puerto COM5 no está abierto y abrirlo
+            if (!puerto2->IsOpen)
+            {
+                puerto2->Open();
+                MessageBox::Show("Conectado a COM6");
+            }
+        }
+        if (puertoCOM7Disponible)
+        {
+            // Comprobar si el puerto COM5 no está abierto y abrirlo
+            if (!puerto3->IsOpen)
+            {
+                puerto3->Open();
+                MessageBox::Show("Conectado a COM7");
+            }
         }
        
     }
