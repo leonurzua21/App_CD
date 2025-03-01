@@ -59,7 +59,7 @@ public:
                 if (!puerto2->IsOpen)
                 {
                     puerto2->Open();
-                    MessageBox::Show("Conectado a COM5");
+                    MessageBox::Show("Conectado a COM6");
                 }
                 else
                 {
@@ -72,7 +72,7 @@ public:
                     if (!puerto3->IsOpen)
                     {
                         puerto3->Open();
-                        MessageBox::Show("Conectado a COM5");
+                        MessageBox::Show("Conectado a COM7");
                     }
                     else
                     {
