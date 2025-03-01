@@ -122,6 +122,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Acceso.cpp" />
+    <ClCompile Include="AppUsuario.cpp" />
+    <ClCompile Include="Comunicacion.cpp" />
     <ClCompile Include="Conexion.cpp" />
     <ClCompile Include="Consultar.cpp" />
     <ClCompile Include="Registro.cpp" />
@@ -130,19 +132,31 @@
     <ClInclude Include="Acceso.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="AppUsuario.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Comunicacion.h" />
     <ClInclude Include="Conexion.h" />
     <ClInclude Include="Consultar.h" />
     <ClInclude Include="Registro.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="SerialClass.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Acceso.resx">
       <DependentUpon>Acceso.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AppUsuario.resx">
+      <DependentUpon>AppUsuario.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Registro.resx">
       <DependentUpon>Registro.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="App_CD.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
