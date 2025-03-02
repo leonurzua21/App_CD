@@ -22,11 +22,11 @@ protected:
 		connect = gcnew SqlConnection(Convert::ToString(ts));
 	}
 public:
-	static bool UserExists(String^ user) 
+	static bool UserExists(String^ userName)  //Ingresa con nombre de usuario
 	{ //Abre una conexión a la BD y verifica si el usuario existe
 		ObtenerDatos();
 		
-		String^ query = "SELECT COUNT(*) FROM Usuario WHERE nombre = '" + user + "'";
+		String^ query = "SELECT COUNT(*) FROM Usuario WHERE usuario = '" + userName + "'"; //Consulta el conteo de los usuarios registrados en la tabla Usuario
 		SqlCommand^ cmd = gcnew SqlCommand(query, connect);
 		connect->Open();
 		int count = (int)cmd->ExecuteScalar();

@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Registro.h"
 #include "Consultar.h"
+#include "AppUsuario.h"
 
 
 namespace AppCD {
@@ -43,7 +44,9 @@ namespace AppCD {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::TextBox^ txbUser;
+	private: System::Windows::Forms::TextBox^ txbUserName;
+	protected:
+
 	private: System::Windows::Forms::TextBox^ txbPass;
 	private: System::Windows::Forms::Button^ btnAcceder;
 	private: System::Windows::Forms::Button^ btnRegistro;
@@ -63,18 +66,18 @@ namespace AppCD {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->txbUser = (gcnew System::Windows::Forms::TextBox());
+			this->txbUserName = (gcnew System::Windows::Forms::TextBox());
 			this->txbPass = (gcnew System::Windows::Forms::TextBox());
 			this->btnAcceder = (gcnew System::Windows::Forms::Button());
 			this->btnRegistro = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
-			// txbUser
+			// txbUserName
 			// 
-			this->txbUser->Location = System::Drawing::Point(166, 87);
-			this->txbUser->Name = L"txbUser";
-			this->txbUser->Size = System::Drawing::Size(100, 20);
-			this->txbUser->TabIndex = 0;
+			this->txbUserName->Location = System::Drawing::Point(166, 87);
+			this->txbUserName->Name = L"txbUserName";
+			this->txbUserName->Size = System::Drawing::Size(100, 20);
+			this->txbUserName->TabIndex = 0;
 			// 
 			// txbPass
 			// 
@@ -111,7 +114,7 @@ namespace AppCD {
 			this->Controls->Add(this->btnRegistro);
 			this->Controls->Add(this->btnAcceder);
 			this->Controls->Add(this->txbPass);
-			this->Controls->Add(this->txbUser);
+			this->Controls->Add(this->txbUserName);
 			this->Name = L"Acceso";
 			this->Text = L"Acceso";
 			this->ResumeLayout(false);
@@ -122,21 +125,27 @@ namespace AppCD {
 
     private: System::Void btnAcceder_Click(System::Object^ sender, System::EventArgs^ e) {		
 
-		String^ User = txbUser->Text;
+		String^ User = txbUserName->Text;
 		String^ Pass = txbPass->Text;
 
 		if (!String::IsNullOrEmpty(User) && !String::IsNullOrEmpty(Pass)) //Compara la expresión regular con las cadenas de texto proporcionadas por el usuario
 		{
 			if (Consultar::UserExists(User)) //Verfica Si el usuario existe en la BD
 			{
-				MessageBox::Show("Bienvenido " + User);
-				txbUser->Clear();
+				MessageBox::Show("Bienvenid@ " + User);
+				txbUserName->Clear();
 				txbPass->Clear(); //Limpia los campos de texto
+
+				AppCD::AppUsuario^ vistaprincipal = gcnew AppCD::AppUsuario();
+				vistaprincipal->Show(); //Muestra el formulario de control de la casa domotica
+				AppCD::Acceso^ ocultarformulario = gcnew AppCD::Acceso();
+				ocultarformulario->Close();
 			}
 			else
 			{
 				MessageBox::Show("Parece que no se ha registrado aun" + "\n" + "Complete el registro haciendo clic en el boton Registro");
 			}
+
 		}
 		else
 		{
