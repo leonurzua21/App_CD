@@ -35,5 +35,5 @@ public:
 			return true;
 		else
 			return false;
-		}
+	}
 };

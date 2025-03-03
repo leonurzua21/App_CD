@@ -1,6 +1,5 @@
 #pragma once
 #include "Comunicacion.h"
-#include <array>
 
 namespace AppCD {
 
@@ -10,16 +9,24 @@ namespace AppCD {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO::Ports;
+	using namespace System::IO;
+
 
 	/// <summary>
 	/// Resumen de AppUsuario
 	/// </summary>
 	public ref class AppUsuario : public System::Windows::Forms::Form
 	{
+	private:
+		Comunicacion^ objComunicacion;  // Instancia única de Comunicacion para no abrir más de un puerto serie
+		SerialPort^ puerto; // Instancia del puerto serie
+
 	public:
 		AppUsuario(void)
 		{
 			InitializeComponent();
+			objComunicacion = gcnew Comunicacion(); // Inicializa la instancia de Comunicacion
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -43,8 +50,12 @@ namespace AppCD {
 	private: System::Windows::Forms::Label^ lblcomunicacion;
 	private: System::Windows::Forms::ComboBox^ cboPlaca;
 	private: System::Windows::Forms::Button^ btnConectar;
-	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ lblLucesLeds;
+
 	private: System::Windows::Forms::Button^ btnOnOffLEDS;
+	private: System::Windows::Forms::Label^ lblAbrirPuerta;
+	private: System::Windows::Forms::Button^ btnAbrirPuertas;
+
 
 
 
@@ -66,8 +77,10 @@ namespace AppCD {
 			this->lblcomunicacion = (gcnew System::Windows::Forms::Label());
 			this->cboPlaca = (gcnew System::Windows::Forms::ComboBox());
 			this->btnConectar = (gcnew System::Windows::Forms::Button());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->lblLucesLeds = (gcnew System::Windows::Forms::Label());
 			this->btnOnOffLEDS = (gcnew System::Windows::Forms::Button());
+			this->lblAbrirPuerta = (gcnew System::Windows::Forms::Label());
+			this->btnAbrirPuertas = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// lblcomunicacion
@@ -99,14 +112,14 @@ namespace AppCD {
 			this->btnConectar->UseVisualStyleBackColor = true;
 			this->btnConectar->Click += gcnew System::EventHandler(this, &AppUsuario::btnConectar_Click);
 			// 
-			// label1
+			// lblLucesLeds
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(294, 32);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(67, 13);
-			this->label1->TabIndex = 4;
-			this->label1->Text = L"Luces LEDS";
+			this->lblLucesLeds->AutoSize = true;
+			this->lblLucesLeds->Location = System::Drawing::Point(294, 32);
+			this->lblLucesLeds->Name = L"lblLucesLeds";
+			this->lblLucesLeds->Size = System::Drawing::Size(67, 13);
+			this->lblLucesLeds->TabIndex = 4;
+			this->lblLucesLeds->Text = L"Luces LEDS";
 			// 
 			// btnOnOffLEDS
 			// 
@@ -114,17 +127,38 @@ namespace AppCD {
 			this->btnOnOffLEDS->Name = L"btnOnOffLEDS";
 			this->btnOnOffLEDS->Size = System::Drawing::Size(75, 23);
 			this->btnOnOffLEDS->TabIndex = 5;
-			this->btnOnOffLEDS->Text = L"OFF";
+			this->btnOnOffLEDS->Text = L"ON";
 			this->btnOnOffLEDS->UseVisualStyleBackColor = true;
 			this->btnOnOffLEDS->Click += gcnew System::EventHandler(this, &AppUsuario::btnOnOffLEDS_Click);
+			// 
+			// lblAbrirPuerta
+			// 
+			this->lblAbrirPuerta->AutoSize = true;
+			this->lblAbrirPuerta->Location = System::Drawing::Point(297, 105);
+			this->lblAbrirPuerta->Name = L"lblAbrirPuerta";
+			this->lblAbrirPuerta->Size = System::Drawing::Size(61, 13);
+			this->lblAbrirPuerta->TabIndex = 6;
+			this->lblAbrirPuerta->Text = L"Abrir puerta";
+			// 
+			// btnAbrirPuertas
+			// 
+			this->btnAbrirPuertas->Location = System::Drawing::Point(286, 135);
+			this->btnAbrirPuertas->Name = L"btnAbrirPuertas";
+			this->btnAbrirPuertas->Size = System::Drawing::Size(75, 23);
+			this->btnAbrirPuertas->TabIndex = 7;
+			this->btnAbrirPuertas->Text = L"ON";
+			this->btnAbrirPuertas->UseVisualStyleBackColor = true;
+			this->btnAbrirPuertas->Click += gcnew System::EventHandler(this, &AppUsuario::btnAbrirPuertas_Click);
 			// 
 			// AppUsuario
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(596, 308);
+			this->Controls->Add(this->btnAbrirPuertas);
+			this->Controls->Add(this->lblAbrirPuerta);
 			this->Controls->Add(this->btnOnOffLEDS);
-			this->Controls->Add(this->label1);
+			this->Controls->Add(this->lblLucesLeds);
 			this->Controls->Add(this->btnConectar);
 			this->Controls->Add(this->cboPlaca);
 			this->Controls->Add(this->lblcomunicacion);
@@ -135,30 +169,54 @@ namespace AppCD {
 
 		}
 #pragma endregion
-    private: System::Void cboPlaca_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {  
-		array<String^>^ desarrolladores = gcnew cli::array<String^> { "Arduino Uno","Arduino Leonardo"}; //Se pueden agregar más argumentos en el arreglo si desea agregar más placas de desarrollo ARDUINO
-
-        // Mostrar el valor seleccionado  
-        MessageBox::Show("Placa seleccionada: " + desarrolladores[0]); //Accede al elemento 0 del arreglo declarado
-    }
-	private: System::Void btnConectar_Click(System::Object^ sender, System::EventArgs^ e) {
-		Comunicacion^ objComunicacion = gcnew Comunicacion();
-		objComunicacion->arduino();
-
-	}
-private: System::Void btnOnOffLEDS_Click(System::Object^ sender, System::EventArgs^ e) {
-	bool encendido = 0;
-	bool apagado = 0;
-	
-	if (encendido == 0 && btnOnOffLEDS->Text->Equals("OFF"))
-	{
-		btnOnOffLEDS->Text = "ON";  // Cambia el texto del botón a "ON"
-		encendido = 1;  // Cambia el estado a encendido
-	}
-	else {
-		btnOnOffLEDS->Text ="OFF";  // Cambia el texto del botón a "OFF"
-		apagado = 1;  // Cambia el estado a apagado
-	}	
+private: System::Void cboPlaca_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {  
+	array<String^>^ desarrolladores = gcnew cli::array<String^> { "Arduino Uno","Arduino Leonardo"}; //Se pueden agregar más argumentos en el arreglo si desea agregar más placas de desarrollo ARDUINO
+	// Mostrar el valor seleccionado  
+	MessageBox::Show("Placa seleccionada: " + desarrolladores[0]); //Accede al elemento 0 del arreglo declarado
 }
-};
+private: System::Void btnConectar_Click(System::Object^ sender, System::EventArgs^ e) {
+	objComunicacion->arduino(); // Llama al método arduino de la instancia de Comunicacion
+}
+private: System::Void btnOnOffLEDS_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (objComunicacion->estaAbierto()) // Verifica si el puerto está abierto
+	{
+		puerto = objComunicacion->obtenerPuerto(); // Obtiene el puerto desde la instancia de Comunicacion
+		if (btnOnOffLEDS->Text->Equals("ON"))
+		{
+			btnOnOffLEDS->Text = "OFF";  // Cambia el texto del botón a "ON"
+			puerto->Write("a");  // Envía el valor 1 al puerto serie
+
+		}
+		else
+		{
+			btnOnOffLEDS->Text = "ON";  // Cambia el texto del botón a "OFF"
+			puerto->Write("b");  // Envía el valor 0 al puerto serie
+		}
+	}
+	else
+	{
+		MessageBox::Show("No se ha establecido una conexión con el puerto.");
+	}
+}
+private: System::Void btnAbrirPuertas_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (objComunicacion->estaAbierto()) // Verifica si el puerto está abierto
+	{
+		puerto = objComunicacion->obtenerPuerto(); // Obtiene el puerto desde la instancia de Comunicacion
+		if (btnAbrirPuertas->Text->Equals("ON"))
+		{
+			btnAbrirPuertas->Text = "OFF";  // Cambia el texto del botón a "ON"
+			puerto->Write("1");  // Envía el valor 1 al puerto serie
+
+		}
+		else
+		{
+			btnAbrirPuertas->Text = "ON";  // Cambia el texto del botón a "OFF"
+			puerto->Write("0");  // Envía el valor 0 al puerto serie
+		}
+	}
+	else
+	{
+		MessageBox::Show("No se ha establecido una conexión con el puerto.");
+	}
+}};
 }

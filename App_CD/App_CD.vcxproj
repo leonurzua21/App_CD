@@ -142,7 +142,6 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="resource.h" />
-    <ClInclude Include="SerialClass.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Acceso.resx">

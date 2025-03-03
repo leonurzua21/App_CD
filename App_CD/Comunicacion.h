@@ -7,49 +7,40 @@ using namespace System::IO;
 ref class Comunicacion
 {
 public:
-    Comunicacion();
-
+    SerialPort^ puerto; // Instancia del puerto serie
 public:
-    void arduino()
+    Comunicacion() // Constructor de la clase
     {
-        // Obtener la lista de puertos COM disponibles en la computadora
+        puerto = nullptr; // Inicializamos como null para garantizar que no se abra por accidente
+    }
+    // Método para intentar conectar el puerto serie
+    bool arduino()
+    {
         array<String^>^ puertosDisponibles = SerialPort::GetPortNames();
-
-        // Crear objetos SerialPort
-        array<SerialPort^>^ puertos = {
+        array<SerialPort^>^ serialPorts = {
             gcnew SerialPort("COM4"),
             gcnew SerialPort("COM5"),
             gcnew SerialPort("COM6"),
             gcnew SerialPort("COM7")
         };
-
+        
         bool conectado = false;
 
-        for each(SerialPort ^ puerto in puertos)
+        for each (SerialPort ^ port in serialPorts)
         {
-            if (Array::IndexOf(puertosDisponibles, puerto->PortName) >= 0)
+            if (Array::IndexOf(puertosDisponibles, port->PortName) >= 0)
             {
                 try
                 {
-                    if (!puerto->IsOpen)
+                    if (!port->IsOpen)
                     {
-                        puerto->Open();
-                        MessageBox::Show("Conectado a " + puerto->PortName);
+                        port->Open();
+                        puerto = port; // Asignamos el puerto que se conectó
+                        puerto->BaudRate = 9600;
+                        MessageBox::Show("Conexión exitosa a: " + puerto->PortName /*obtiene el nombre del puerto*/);
                         conectado = true;
                         break;
                     }
-                }
-                catch (UnauthorizedAccessException^ ex)
-                {
-                    MessageBox::Show("Acceso denegado al puerto: " + ex->Message);
-                }
-                catch (ArgumentOutOfRangeException^ ex)
-                {
-                    MessageBox::Show("Error de configuración del puerto: " + ex->Message);
-                }
-                catch (IOException^ ex)
-                {
-                    MessageBox::Show("Error al intentar abrir el puerto: " + ex->Message);
                 }
                 catch (Exception^ ex)
                 {
@@ -62,5 +53,19 @@ public:
         {
             MessageBox::Show("No se pudo conectar a ninguno de los puertos disponibles.");
         }
+
+        return conectado; // Retorna si la conexión fue exitosa
+    }
+
+    SerialPort^ obtenerPuerto() // Método para obtener el puerto conectado
+
+    {
+        return puerto; // Devuelve el puerto conectado
+    }
+
+    bool estaAbierto() // Método para verificar si el puerto está abierto
+
+    {
+        return puerto != nullptr && puerto->IsOpen;
     }
 };
