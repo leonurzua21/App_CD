@@ -218,5 +218,6 @@ private: System::Void btnAbrirPuertas_Click(System::Object^ sender, System::Even
 	{
 		MessageBox::Show("No se ha establecido una conexión con el puerto.");
 	}
-}};
+}
+};
 }
