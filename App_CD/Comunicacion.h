@@ -36,7 +36,7 @@ public:
                     {
                         port->Open();
                         puerto = port; // Asignamos el puerto que se conectó
-                        puerto->BaudRate = 9600;
+						puerto->BaudRate = 115200; //Bits por segundo
                         MessageBox::Show("Conexión exitosa a: " + puerto->PortName /*obtiene el nombre del puerto*/);
                         conectado = true;
                         break;
