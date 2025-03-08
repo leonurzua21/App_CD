@@ -37,9 +37,6 @@ namespace AppCD {
 
 
 
-
-
-
 	private: System::Windows::Forms::Label^ lblRed;
 	private: System::Windows::Forms::Label^ lblGreen;
 	private: System::Windows::Forms::Label^ lblBlue;
@@ -54,11 +51,11 @@ namespace AppCD {
 			InitializeComponent();
             // Agregar las líneas correctas en el constructor
             tbRojo->Minimum = 0;
-            tbRojo->Maximum = 255;
+            tbRojo->Maximum = 1;
             tbVerde->Minimum = 0;
-            tbVerde->Maximum = 255;
+            tbVerde->Maximum = 1;
             tbAzul->Minimum = 0;
-            tbAzul->Maximum = 255;
+            tbAzul->Maximum = 1;
 			objComunicacion = gcnew Comunicacion(); // Inicializa la instancia de Comunicacion
 			
 			//
@@ -433,7 +430,7 @@ private: System::Void tbRed_Scroll(System::Object^ sender, System::EventArgs^ e)
 		RGBrojo = tbRojo->Value;
 		lblSegRojo->Text = RGBrojo.ToString();
 		puerto->Write("r");
-		ActualizarColor();
+		//ActualizarColor();
 	}
 	else
 	{
@@ -447,7 +444,7 @@ private: System::Void tbGreen_Scroll(System::Object^ sender, System::EventArgs^ 
 		RGBverde = tbVerde->Value;
 		lblSegVerde->Text = RGBverde.ToString();
 		puerto->Write("g");
-		ActualizarColor();
+		//ActualizarColor();
 	}
 	else
 	{
@@ -461,21 +458,21 @@ private: System::Void tbBlue_Scroll(System::Object^ sender, System::EventArgs^ e
 		RGBazul = tbAzul->Value;
 		lblSegAzul->Text = RGBazul.ToString();
 		puerto->Write("b");
-		ActualizarColor();
+		//ActualizarColor();
 	}
 	else
 	{
 		MessageBox::Show("No se ha establecido una conexión con el puerto.");
 	}
 }
-private: void ActualizarColor() //Color RGB en PictureBox
-{
-	Color colorRGB = (gcnew Color)->FromArgb(RGBrojo, RGBverde, RGBazul);
-	colorRGB = Color::FromArgb(RGBrojo, RGBverde, RGBazul);
-	pboRGB->BackColor = colorRGB;
-	lblSegRojo->Text = RGBrojo.ToString();
-	lblSegVerde->Text = RGBverde.ToString();
-	lblSegAzul->Text = RGBazul.ToString();
-}
+//private: void ActualizarColor() //Color RGB en PictureBox
+//{
+//	Color colorRGB = (gcnew Color)->FromArgb(RGBrojo, RGBverde, RGBazul);
+//	colorRGB = Color::FromArgb(RGBrojo, RGBverde, RGBazul);
+//	pboRGB->BackColor = colorRGB;
+//	lblSegRojo->Text = RGBrojo.ToString();
+//	lblSegVerde->Text = RGBverde.ToString();
+//	lblSegAzul->Text = RGBazul.ToString();
+//}
 };
 }
