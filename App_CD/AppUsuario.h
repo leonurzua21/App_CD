@@ -376,7 +376,7 @@ private: System::Void btnColorAzul_Click(System::Object^ sender, System::EventAr
 		else
 		{
 			btnColorAzul->Text = "AZUL";  // Cambia el texto del botón a "OFF"
-			puerto->Write("b");  // Envía el valor 0 al puerto seri
+			puerto->Write("b");  // Envía el valor 0 al puerto serie
 		}
 	}
 	else
