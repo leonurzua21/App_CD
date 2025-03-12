@@ -17,7 +17,7 @@ protected:
 	{
 		st = gcnew SqlConnectionStringBuilder();
 		st->DataSource = "DESKTOP-GJGNJ95\\SQLEXPRESS";
-		st->InitialCatalog = "pba";
+		st->InitialCatalog = "Casa_dom";
 		st->IntegratedSecurity = "True";
        
 

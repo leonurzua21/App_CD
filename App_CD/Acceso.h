@@ -50,6 +50,8 @@ namespace AppCD {
 	private: System::Windows::Forms::TextBox^ txbPass;
 	private: System::Windows::Forms::Button^ btnAcceder;
 	private: System::Windows::Forms::Button^ btnRegistro;
+	private: System::Windows::Forms::Label^ lblNombreUsuario;
+	private: System::Windows::Forms::Label^ lblContraseña;
 	protected:
 
 
@@ -70,6 +72,8 @@ namespace AppCD {
 			this->txbPass = (gcnew System::Windows::Forms::TextBox());
 			this->btnAcceder = (gcnew System::Windows::Forms::Button());
 			this->btnRegistro = (gcnew System::Windows::Forms::Button());
+			this->lblNombreUsuario = (gcnew System::Windows::Forms::Label());
+			this->lblContraseña = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// txbUserName
@@ -106,11 +110,31 @@ namespace AppCD {
 			this->btnRegistro->UseVisualStyleBackColor = true;
 			this->btnRegistro->Click += gcnew System::EventHandler(this, &Acceso::btnRegistro_Click);
 			// 
+			// lblNombreUsuario
+			// 
+			this->lblNombreUsuario->AutoSize = true;
+			this->lblNombreUsuario->Location = System::Drawing::Point(51, 93);
+			this->lblNombreUsuario->Name = L"lblNombreUsuario";
+			this->lblNombreUsuario->Size = System::Drawing::Size(96, 13);
+			this->lblNombreUsuario->TabIndex = 4;
+			this->lblNombreUsuario->Text = L"Nombre de usuario";
+			// 
+			// lblContraseña
+			// 
+			this->lblContraseña->AutoSize = true;
+			this->lblContraseña->Location = System::Drawing::Point(54, 172);
+			this->lblContraseña->Name = L"lblContraseña";
+			this->lblContraseña->Size = System::Drawing::Size(61, 13);
+			this->lblContraseña->TabIndex = 5;
+			this->lblContraseña->Text = L"Contraseña";
+			// 
 			// Acceso
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(463, 370);
+			this->Controls->Add(this->lblContraseña);
+			this->Controls->Add(this->lblNombreUsuario);
 			this->Controls->Add(this->btnRegistro);
 			this->Controls->Add(this->btnAcceder);
 			this->Controls->Add(this->txbPass);
@@ -123,14 +147,13 @@ namespace AppCD {
 		}
 #pragma endregion
 
-    private: System::Void btnAcceder_Click(System::Object^ sender, System::EventArgs^ e) {		
-
+    private: System::Void btnAcceder_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ User = txbUserName->Text;
 		String^ Pass = txbPass->Text;
 
 		if (!String::IsNullOrEmpty(User) && !String::IsNullOrEmpty(Pass)) //Compara la expresión regular con las cadenas de texto proporcionadas por el usuario
 		{
-			if (Consultar::UserExists(User)) //Verfica Si el usuario existe en la BD
+			if (Consultar::UserExists(User, Pass)) //Verfica Si el usuario existe en la BD
 			{
 				MessageBox::Show("Bienvenid@ " + User);
 				txbUserName->Clear();
@@ -143,9 +166,8 @@ namespace AppCD {
 			}
 			else
 			{
-				MessageBox::Show("Parece que no se ha registrado aun" + "\n" + "Complete el registro haciendo clic en el boton Registro");
+				MessageBox::Show("Usuario o contraseña incorrectos.\nSi no está registrado, haga clic en el botón de Registro.");
 			}
-
 		}
 		else
 		{

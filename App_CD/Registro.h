@@ -50,13 +50,23 @@ namespace AppCD {
 
 
 	private: System::Windows::Forms::Button^ btnCompletar;
+	private: System::Windows::Forms::Label^ lblNombreUsuario;
+	private: System::Windows::Forms::Label^ lblApellidoUsuario;
+	private: System::Windows::Forms::Label^ lblUsuario;
+	private: System::Windows::Forms::Label^ lblContraseñaUsuario;
+	private: System::Windows::Forms::ToolTip^ toolTip1;
+	private: System::ComponentModel::IContainer^ components;
+
+
+
+
 
 
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -65,11 +75,17 @@ namespace AppCD {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->txbNombre = (gcnew System::Windows::Forms::TextBox());
 			this->txbApellido = (gcnew System::Windows::Forms::TextBox());
 			this->txbUserName = (gcnew System::Windows::Forms::TextBox());
 			this->txbUserPass = (gcnew System::Windows::Forms::TextBox());
 			this->btnCompletar = (gcnew System::Windows::Forms::Button());
+			this->lblNombreUsuario = (gcnew System::Windows::Forms::Label());
+			this->lblApellidoUsuario = (gcnew System::Windows::Forms::Label());
+			this->lblUsuario = (gcnew System::Windows::Forms::Label());
+			this->lblContraseñaUsuario = (gcnew System::Windows::Forms::Label());
+			this->toolTip1 = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->SuspendLayout();
 			// 
 			// txbNombre
@@ -92,6 +108,7 @@ namespace AppCD {
 			this->txbUserName->Name = L"txbUserName";
 			this->txbUserName->Size = System::Drawing::Size(100, 20);
 			this->txbUserName->TabIndex = 2;
+			this->toolTip1->SetToolTip(this->txbUserName, L"El nombre de usuario deberá ser de 10 caracteres alfanúmericos");
 			// 
 			// txbUserPass
 			// 
@@ -99,6 +116,8 @@ namespace AppCD {
 			this->txbUserPass->Name = L"txbUserPass";
 			this->txbUserPass->Size = System::Drawing::Size(100, 20);
 			this->txbUserPass->TabIndex = 3;
+			this->toolTip1->SetToolTip(this->txbUserPass, L"La contraseña deberá contener 10 caracteres alfanumericos, incluido un caracter e"
+				L"special");
 			// 
 			// btnCompletar
 			// 
@@ -110,11 +129,51 @@ namespace AppCD {
 			this->btnCompletar->UseVisualStyleBackColor = true;
 			this->btnCompletar->Click += gcnew System::EventHandler(this, &Registro::btnCompletar_Click);
 			// 
+			// lblNombreUsuario
+			// 
+			this->lblNombreUsuario->AutoSize = true;
+			this->lblNombreUsuario->Location = System::Drawing::Point(54, 57);
+			this->lblNombreUsuario->Name = L"lblNombreUsuario";
+			this->lblNombreUsuario->Size = System::Drawing::Size(44, 13);
+			this->lblNombreUsuario->TabIndex = 5;
+			this->lblNombreUsuario->Text = L"Nombre";
+			// 
+			// lblApellidoUsuario
+			// 
+			this->lblApellidoUsuario->AutoSize = true;
+			this->lblApellidoUsuario->Location = System::Drawing::Point(54, 87);
+			this->lblApellidoUsuario->Name = L"lblApellidoUsuario";
+			this->lblApellidoUsuario->Size = System::Drawing::Size(44, 13);
+			this->lblApellidoUsuario->TabIndex = 6;
+			this->lblApellidoUsuario->Text = L"Apellido";
+			// 
+			// lblUsuario
+			// 
+			this->lblUsuario->AutoSize = true;
+			this->lblUsuario->Location = System::Drawing::Point(31, 129);
+			this->lblUsuario->Name = L"lblUsuario";
+			this->lblUsuario->Size = System::Drawing::Size(96, 13);
+			this->lblUsuario->TabIndex = 7;
+			this->lblUsuario->Text = L"Nombre de usuario";
+			// 
+			// lblContraseñaUsuario
+			// 
+			this->lblContraseñaUsuario->AutoSize = true;
+			this->lblContraseñaUsuario->Location = System::Drawing::Point(57, 168);
+			this->lblContraseñaUsuario->Name = L"lblContraseñaUsuario";
+			this->lblContraseñaUsuario->Size = System::Drawing::Size(61, 13);
+			this->lblContraseñaUsuario->TabIndex = 8;
+			this->lblContraseñaUsuario->Text = L"Contraseña";
+			// 
 			// Registro
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(430, 340);
+			this->Controls->Add(this->lblContraseñaUsuario);
+			this->Controls->Add(this->lblUsuario);
+			this->Controls->Add(this->lblApellidoUsuario);
+			this->Controls->Add(this->lblNombreUsuario);
 			this->Controls->Add(this->btnCompletar);
 			this->Controls->Add(this->txbUserPass);
 			this->Controls->Add(this->txbUserName);
