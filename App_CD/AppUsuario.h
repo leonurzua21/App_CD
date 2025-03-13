@@ -32,6 +32,8 @@ namespace AppCD {
 
 	private: System::Windows::Forms::Button^ btnColorVerde;
 	private: System::Windows::Forms::Button^ btnColorAzul;
+	private: System::Windows::Forms::Label^ lblencendertodo;
+	private: System::Windows::Forms::Button^ btnencendertodo;
 
 
 
@@ -101,6 +103,8 @@ namespace AppCD {
 			this->btnColorRojo = (gcnew System::Windows::Forms::Button());
 			this->btnColorVerde = (gcnew System::Windows::Forms::Button());
 			this->btnColorAzul = (gcnew System::Windows::Forms::Button());
+			this->lblencendertodo = (gcnew System::Windows::Forms::Label());
+			this->btnencendertodo = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// lblcomunicacion
@@ -182,7 +186,7 @@ namespace AppCD {
 			// lblLCD
 			// 
 			this->lblLCD->AutoSize = true;
-			this->lblLCD->Location = System::Drawing::Point(273, 236);
+			this->lblLCD->Location = System::Drawing::Point(283, 165);
 			this->lblLCD->Name = L"lblLCD";
 			this->lblLCD->Size = System::Drawing::Size(68, 13);
 			this->lblLCD->TabIndex = 9;
@@ -190,14 +194,14 @@ namespace AppCD {
 			// 
 			// txbTextoLCD
 			// 
-			this->txbTextoLCD->Location = System::Drawing::Point(274, 262);
+			this->txbTextoLCD->Location = System::Drawing::Point(274, 181);
 			this->txbTextoLCD->Name = L"txbTextoLCD";
 			this->txbTextoLCD->Size = System::Drawing::Size(100, 20);
 			this->txbTextoLCD->TabIndex = 10;
 			// 
 			// btnEnviarLCD
 			// 
-			this->btnEnviarLCD->Location = System::Drawing::Point(274, 288);
+			this->btnEnviarLCD->Location = System::Drawing::Point(274, 207);
 			this->btnEnviarLCD->Name = L"btnEnviarLCD";
 			this->btnEnviarLCD->Size = System::Drawing::Size(100, 23);
 			this->btnEnviarLCD->TabIndex = 11;
@@ -235,11 +239,32 @@ namespace AppCD {
 			this->btnColorAzul->UseVisualStyleBackColor = true;
 			this->btnColorAzul->Click += gcnew System::EventHandler(this, &AppUsuario::btnColorAzul_Click);
 			// 
+			// lblencendertodo
+			// 
+			this->lblencendertodo->AutoSize = true;
+			this->lblencendertodo->Location = System::Drawing::Point(591, 25);
+			this->lblencendertodo->Name = L"lblencendertodo";
+			this->lblencendertodo->Size = System::Drawing::Size(115, 13);
+			this->lblencendertodo->TabIndex = 16;
+			this->lblencendertodo->Text = L"Encender/apagar todo";
+			// 
+			// btnencendertodo
+			// 
+			this->btnencendertodo->Location = System::Drawing::Point(623, 51);
+			this->btnencendertodo->Name = L"btnencendertodo";
+			this->btnencendertodo->Size = System::Drawing::Size(75, 23);
+			this->btnencendertodo->TabIndex = 17;
+			this->btnencendertodo->Text = L"ON";
+			this->btnencendertodo->UseVisualStyleBackColor = true;
+			this->btnencendertodo->Click += gcnew System::EventHandler(this, &AppUsuario::btnencendertodo_Click);
+			// 
 			// AppUsuario
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(832, 347);
+			this->Controls->Add(this->btnencendertodo);
+			this->Controls->Add(this->lblencendertodo);
 			this->Controls->Add(this->btnColorAzul);
 			this->Controls->Add(this->btnColorVerde);
 			this->Controls->Add(this->btnColorRojo);
@@ -377,6 +402,27 @@ private: System::Void btnColorAzul_Click(System::Object^ sender, System::EventAr
 		{
 			btnColorAzul->Text = "AZUL";  // Cambia el texto del botón a "OFF"
 			puerto->Write("b");  // Envía el valor 0 al puerto serie	
+		}
+	}
+	else
+	{
+		MessageBox::Show("No se ha establecido una conexión con el puerto.");
+	}
+}
+private: System::Void btnencendertodo_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (objComunicacion->estaAbierto()) // Verifica si el puerto está abierto
+	{
+		puerto = objComunicacion->obtenerPuerto(); // Obtiene el puerto desde la instancia de Comunicacion
+		if (btnencendertodo->Text->Equals("ON"))
+		{
+			btnencendertodo->Text = "OFF";  // Cambia el texto del botón a "ON"
+			puerto->Write("t");  // Envía el valor 1 al puerto serie
+		}
+		else
+		{
+			btnencendertodo->Text = "ON";  // Cambia el texto del botón a "OFF"
+			puerto->Write("f");  // Envía el valor 0 al puerto serie
 		}
 	}
 	else

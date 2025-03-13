@@ -16,10 +16,10 @@ protected:
     void Conectar()
 	{
 		st = gcnew SqlConnectionStringBuilder();
-		st->DataSource = "DESKTOP-GJGNJ95\\SQLEXPRESS";
+		st->DataSource = "192.168.1.73"; //Base de datos remota
 		st->InitialCatalog = "Casa_dom";
-		st->IntegratedSecurity = "True";
-       
+		st->UserID = "Test";
+		st->Password = "pbadatab2024!";       
 
         conecta = gcnew SqlConnection(Convert::ToString(st));
     }
