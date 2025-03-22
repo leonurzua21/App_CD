@@ -16,7 +16,7 @@ protected:
     void Conectar()
 	{
 		st = gcnew SqlConnectionStringBuilder();
-		st->DataSource = "192.168.1.73"; //Base de datos remota
+		st->DataSource = "172.20.10.14"; //Base de datos remota //ip red casa 192.168.1.73
 		st->InitialCatalog = "Casa_dom";
 		st->UserID = "Test";
 		st->Password = "pbadatab2024!";       
