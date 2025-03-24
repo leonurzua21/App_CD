@@ -16,7 +16,7 @@ protected:
     void Conectar()
 	{
 		st = gcnew SqlConnectionStringBuilder();
-		st->DataSource = "172.20.10.14"; //Base de datos remota //ip red casa 192.168.1.73
+        st->DataSource = "casadomotica01.cpwg6wk42ng3.us-east-2.rds.amazonaws.com"; //Enpoint AWS
 		st->InitialCatalog = "Casa_dom";
 		st->UserID = "Test";
 		st->Password = "pbadatab2024!";       
@@ -39,7 +39,7 @@ public:
         ejecutar->Parameters->AddWithValue("@pass",UserPass);
 
         conecta->Open();
-        ejecutar->ExecuteNonQuery();
+        ejecutar->ExecuteNonQuery(); //Agregar mensaje en caso de que se envien repetidos
         conecta->Close();
     }
 };

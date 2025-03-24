@@ -15,9 +15,10 @@ protected:
 		ObtenerDatos()
 	{
 		ts = gcnew SqlConnectionStringBuilder();
-		ts->DataSource = "DESKTOP-GJGNJ95\\SQLEXPRESS";
+		ts->DataSource = "casadomotica01.cpwg6wk42ng3.us-east-2.rds.amazonaws.com"; //Enpoint AWS
 		ts->InitialCatalog = "Casa_dom";
-		ts->IntegratedSecurity = "True";
+		ts->UserID = "Test";
+		ts->Password = "pbadatab2024!";
 
 		connect = gcnew SqlConnection(Convert::ToString(ts));
 	}
