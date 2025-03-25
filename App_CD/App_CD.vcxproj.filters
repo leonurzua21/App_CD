@@ -56,19 +56,5 @@
     <ClInclude Include="Comunicacion.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="App_CD.rc">
-      <Filter>Archivos de recursos</Filter>
-    </ResourceCompile>
-=======
->>>>>>> c867218 (Conexion remota Lista)
-=======
->>>>>>> c867218 (Conexion remota Lista)
-=======
->>>>>>> c867218 (Conexion remota Lista)
   </ItemGroup>
 </Project>
