@@ -1,4 +1,5 @@
 #pragma once
+#include "Consultar.h"
 
 using namespace System;
 using namespace System::Configuration;
@@ -43,10 +44,10 @@ public:
 
         String^ enviardatos = "INSERT INTO usuario (nombre,apellido,usuario,pass) values (@nombre,@apellido,@usuario,@pass)";
         MySqlCommand^ ejecutar = gcnew MySqlCommand(enviardatos, conecta);
-        ejecutar->Parameters->AddWithValue("@nombre",nombre);
-        ejecutar->Parameters->AddWithValue("@apellido",apellido);
-        ejecutar->Parameters->AddWithValue("@usuario",UserName);
-        ejecutar->Parameters->AddWithValue("@pass",UserPass);
+        ejecutar->Parameters->AddWithValue("@nombre", nombre);
+        ejecutar->Parameters->AddWithValue("@apellido", apellido);
+        ejecutar->Parameters->AddWithValue("@usuario", UserName);
+        ejecutar->Parameters->AddWithValue("@pass", UserPass);
 
 <<<<<<< HEAD
         conecta->Open();

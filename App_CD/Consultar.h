@@ -31,12 +31,29 @@ protected:
 		connect = gcnew MySqlConnection(Convert::ToString(ts));
 	}
 public:
-	static bool UserExists(String^ userName, String^ userPass)  //Ingresa con nombre de usuario
-	{ //Abre una conexión a la BD y verifica si el usuario existe
+	static bool CredencialesExists(String^ userName, String ^ userPass)  //Ingresa con usuario y contraseña, metodo utilizado en la clase Acceso.h
+	{ //Abre una conexión a la BD y verifica si el usuario y contraseña existe
 		ObtenerDatos();
 		
         String^ query = "SELECT COUNT(*) FROM usuario WHERE usuario = '" + userName + "' AND pass = '" + userPass + "'"; //Consulta el conteo de los usuarios registrados en la tabla Usuario
 		MySqlCommand^ cmd = gcnew MySqlCommand(query, connect);
+		connect->Open();
+		int count = Convert::ToInt32(cmd->ExecuteScalar());
+		connect->Close();
+		if (count > 0)
+			return true;
+		else
+			return false;
+	}
+public:
+	static bool UsuarioExists(String^ userName)  //Ingresa con nombre de usuario, metodo utilizado en la clase Registro.h
+	{ //Abre una conexión a la BD y verifica si el usuario existe
+		ObtenerDatos();
+
+		String^ query = "SELECT COUNT(*) FROM usuario WHERE usuario = @userName"; //Consulta el conteo de los usuarios registrados en la tabla Usuario
+		MySqlCommand^ cmd = gcnew MySqlCommand(query, connect);
+		cmd->Parameters->AddWithValue("@userName", userName);  // Asignar parámetro para el nombre de usuario
+
 		connect->Open();
 		int count = Convert::ToInt32(cmd->ExecuteScalar());
 		connect->Close();

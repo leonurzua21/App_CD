@@ -159,7 +159,7 @@ namespace AppCD {
 
 		if (!String::IsNullOrEmpty(User) && !String::IsNullOrEmpty(Pass)) //Compara la expresión regular con las cadenas de texto proporcionadas por el usuario
 		{
-			if (Consultar::UserExists(User, Pass)) //Verfica Si el usuario existe en la BD
+			if (Consultar::CredencialesExists(User,Pass)) //Verfica Si el usuario existe en la BD
 			{
 				MessageBox::Show("Bienvenid@ " + User);
 				txbUserName->Clear();

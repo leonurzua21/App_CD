@@ -209,21 +209,30 @@ namespace AppCD {
 
 		if (!String::IsNullOrEmpty(Nombre_usuario) && !String::IsNullOrEmpty(Apellido_usuario) && !String::IsNullOrEmpty(UserName) && !String::IsNullOrEmpty(UserPass)) //Compara la expresión regular con las cadenas de texto proporcionadas por el usuario
 		{
-
 			if (Regex::IsMatch(UserName, patron_User) && Regex::IsMatch(UserPass, patron_Pass))
 			{
-				conexion procesardatos;
-				procesardatos.Insertar(txbNombre->Text, txbApellido->Text, txbUserName->Text, txbUserPass->Text);
-				MessageBox::Show("Registro exitoso " + UserName  +"\n" + "Ya puede cerrar esta ventana ");
-				txbNombre->Clear();
-				txbApellido->Clear();
-				txbUserName->Clear();
-				txbUserPass->Clear(); //Limpia los campos de texto
+
+				if (!Consultar::UsuarioExists(UserName)) //Verfica Si el usuario existe en la BD 
+					//Metodo proveniente de la clase Consultar
+				{
+					conexion procesardatos;
+					procesardatos.Insertar(txbNombre->Text, txbApellido->Text, txbUserName->Text, txbUserPass->Text);
+					MessageBox::Show("Registro exitoso " + UserName + "\n" + "Ya puede cerrar esta ventana ");
+					txbNombre->Clear();
+					txbApellido->Clear();
+					txbUserName->Clear();
+					txbUserPass->Clear(); //Limpia los campos de texto
+				}
+				else
+				{
+					MessageBox::Show("Usuario existente, elija otro");
+				}
 			}
-			else 
+			else
 			{
 				MessageBox::Show("Revise usuario y contraseña de nuevo");
 			}
+			
 		}
 		else
 		{
