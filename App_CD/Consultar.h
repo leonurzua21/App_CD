@@ -39,7 +39,7 @@ public:
 			return false;
 	}
 public:
-	static bool UsuarioExists(String^ userName)  //Ingresa con nombre de usuario, metodo utilizado en la clase Registro.h
+	static bool UsuarioExists(String^ userName)  //Ingresa con nombre de usuario, metodo utilizado en la clase Registro.
 	{ //Abre una conexión a la BD y verifica si el usuario existe
 		ObtenerDatos();
 
