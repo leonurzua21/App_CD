@@ -113,6 +113,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector NET 9.2\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -153,9 +156,6 @@
     <EmbeddedResource Include="Registro.resx">
       <DependentUpon>Registro.h</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="App_CD.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
