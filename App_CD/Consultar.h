@@ -15,7 +15,7 @@ protected:
 		ObtenerDatos()
 	{
 		ts = gcnew SqlConnectionStringBuilder();
-		ts->DataSource = "casadomotica01.cpwg6wk42ng3.us-east-2.rds.amazonaws.com"; //Enpoint AWS
+		ts->DataSource = "34.51.35.63"; //Ip Google Cloud
 		ts->InitialCatalog = "Casa_dom";
 		ts->UserID = "Test";
 		ts->Password = "pbadatab2024!";

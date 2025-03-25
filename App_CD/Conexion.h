@@ -16,7 +16,7 @@ protected:
     void Conectar()
 	{
 		st = gcnew SqlConnectionStringBuilder();
-        st->DataSource = "casadomotica01.cpwg6wk42ng3.us-east-2.rds.amazonaws.com"; //Enpoint AWS
+        st->DataSource = "34.51.35.63"; //Google Cloud
 		st->InitialCatalog = "Casa_dom";
 		st->UserID = "Test";
 		st->Password = "pbadatab2024!";       
