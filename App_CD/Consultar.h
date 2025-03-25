@@ -45,7 +45,7 @@ public:
 
 		String^ query = "SELECT COUNT(*) FROM usuario WHERE usuario = @userName"; //Consulta el conteo de los usuarios registrados en la tabla Usuario
 		MySqlCommand^ cmd = gcnew MySqlCommand(query, connect);
-		cmd->Parameters->AddWithValue("@userName", userName);  // Asignar parámetro para el nombre de usuario
+		cmd->Parameters->AddWithValue("@userName", userName);  // Asignar parámetro para el nombre de usuari
 
 		connect->Open();
 		int count = Convert::ToInt32(cmd->ExecuteScalar());
