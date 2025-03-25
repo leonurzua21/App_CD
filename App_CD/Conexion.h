@@ -34,12 +34,21 @@ public:
             Conectar();
         }
 
+<<<<<<< HEAD
         String^ enviardatos = "INSERT INTO usuario (nombre,apellido,usuario,pass) values (@nombre,@apellido,@usuario,@pass)";
         MySqlCommand^ ejecutar = gcnew MySqlCommand(enviardatos, conecta);
         ejecutar->Parameters->AddWithValue("@nombre", nombre);
         ejecutar->Parameters->AddWithValue("@apellido", apellido);
         ejecutar->Parameters->AddWithValue("@usuario", UserName);
         ejecutar->Parameters->AddWithValue("@pass", UserPass);
+=======
+        String^ enviardatos = "INSERT INTO usuario values (@nombre,@apellido,@usuario,@pass)";
+        MySqlCommand^ ejecutar = gcnew MySqlCommand(enviardatos, conecta);
+        ejecutar->Parameters->AddWithValue("@nombre",nombre);
+        ejecutar->Parameters->AddWithValue("@apellido",apellido);
+        ejecutar->Parameters->AddWithValue("@usuario",UserName);
+        ejecutar->Parameters->AddWithValue("@pass",UserPass);
+>>>>>>> c867218 (Conexion remota Lista)
 
         try {
             conecta->Open();

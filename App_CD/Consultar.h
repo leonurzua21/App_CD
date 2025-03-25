@@ -32,6 +32,7 @@ public:
 		MySqlCommand^ cmd = gcnew MySqlCommand(query, connect);
 		connect->Open();
 		int count = Convert::ToInt32(cmd->ExecuteScalar());
+<<<<<<< HEAD
 		connect->Close();
 		if (count > 0)
 			return true;
@@ -49,6 +50,8 @@ public:
 
 		connect->Open();
 		int count = Convert::ToInt32(cmd->ExecuteScalar());
+=======
+>>>>>>> c867218 (Conexion remota Lista)
 		connect->Close();
 		if (count > 0)
 			return true;
