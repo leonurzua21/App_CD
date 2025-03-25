@@ -14,19 +14,12 @@ protected:
 	static void 
 		ObtenerDatos()
 	{
-<<<<<<< HEAD
-		ts = gcnew SqlConnectionStringBuilder();
-		ts->DataSource = "DESKTOP-GJGNJ95\\SQLEXPRESS";
-		ts->InitialCatalog = "Casa_dom";
-		ts->IntegratedSecurity = "True";
-=======
 		ts = gcnew MySqlConnectionStringBuilder();
 		ts->Server = "bvyfz6mfmtdrhrb6tfow-mysql.services.clever-cloud.com";
 		ts->Database = "bvyfz6mfmtdrhrb6tfow";
 		ts->UserID = "u1rkvy1adcgozdfu";
 		ts->Password = "nL9p8U0gipad3TVVINH1";
 		ts->SslMode = MySqlSslMode::Required;
->>>>>>> c867218 (Conexion remota Lista)
 
 		connect = gcnew MySqlConnection(Convert::ToString(ts));
 	}

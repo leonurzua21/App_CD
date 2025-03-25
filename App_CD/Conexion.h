@@ -17,20 +17,12 @@ public:
 protected:
     void Conectar()
 	{
-<<<<<<< HEAD
-		st = gcnew SqlConnectionStringBuilder();
-		st->DataSource = "192.168.1.73"; //Base de datos remota
-		st->InitialCatalog = "Casa_dom";
-		st->UserID = "Test";
-		st->Password = "pbadatab2024!";       
-=======
         st = gcnew MySqlConnectionStringBuilder();
         st->Server = "bvyfz6mfmtdrhrb6tfow-mysql.services.clever-cloud.com";
         st->Database = "bvyfz6mfmtdrhrb6tfow";
         st->UserID = "u1rkvy1adcgozdfu";
         st->Password = "nL9p8U0gipad3TVVINH1";
         st->SslMode = MySqlSslMode::Required;
->>>>>>> c867218 (Conexion remota Lista)
 
         conecta = gcnew MySqlConnection(Convert::ToString(st));
     }
@@ -49,11 +41,6 @@ public:
         ejecutar->Parameters->AddWithValue("@usuario", UserName);
         ejecutar->Parameters->AddWithValue("@pass", UserPass);
 
-<<<<<<< HEAD
-        conecta->Open();
-        ejecutar->ExecuteNonQuery();
-        conecta->Close();
-=======
         try {
             conecta->Open();
             ejecutar->ExecuteNonQuery();
@@ -64,6 +51,5 @@ public:
         finally {
             conecta->Close();
         }
->>>>>>> c867218 (Conexion remota Lista)
     }
 };
