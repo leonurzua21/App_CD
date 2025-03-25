@@ -41,7 +41,7 @@ public:
             Conectar();
         }
 
-        String^ enviardatos = "INSERT INTO usuario values (@nombre,@apellido,@usuario,@pass)";
+        String^ enviardatos = "INSERT INTO usuario (nombre,apellido,usuario,pass) values (@nombre,@apellido,@usuario,@pass)";
         MySqlCommand^ ejecutar = gcnew MySqlCommand(enviardatos, conecta);
         ejecutar->Parameters->AddWithValue("@nombre",nombre);
         ejecutar->Parameters->AddWithValue("@apellido",apellido);
