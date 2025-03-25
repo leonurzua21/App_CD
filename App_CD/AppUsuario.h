@@ -96,7 +96,6 @@ namespace AppCD {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(AppUsuario::typeid));
 			this->lblcomunicacion = (gcnew System::Windows::Forms::Label());
 			this->cboPlaca = (gcnew System::Windows::Forms::ComboBox());
 			this->btnConectar = (gcnew System::Windows::Forms::Button());
@@ -117,14 +116,14 @@ namespace AppCD {
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
-			this->panel5 = (gcnew System::Windows::Forms::Panel());
 			this->panel4 = (gcnew System::Windows::Forms::Panel());
+			this->panel5 = (gcnew System::Windows::Forms::Panel());
 			this->TablePanel->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
 			this->panel3->SuspendLayout();
-			this->panel5->SuspendLayout();
 			this->panel4->SuspendLayout();
+			this->panel5->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// lblcomunicacion
@@ -167,19 +166,12 @@ namespace AppCD {
 			// 
 			// btnLuzSala
 			// 
-			this->btnLuzSala->BackColor = System::Drawing::SystemColors::WindowText;
-			this->btnLuzSala->FlatAppearance->BorderSize = 0;
-			this->btnLuzSala->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->btnLuzSala->ForeColor = System::Drawing::Color::Transparent;
-			this->btnLuzSala->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnLuzSala.Image")));
-			this->btnLuzSala->Location = System::Drawing::Point(156, 18);
-			this->btnLuzSala->Margin = System::Windows::Forms::Padding(0);
+			this->btnLuzSala->Location = System::Drawing::Point(77, 48);
 			this->btnLuzSala->Name = L"btnLuzSala";
-			this->btnLuzSala->Size = System::Drawing::Size(62, 53);
+			this->btnLuzSala->Size = System::Drawing::Size(75, 23);
 			this->btnLuzSala->TabIndex = 5;
 			this->btnLuzSala->Text = L"ON";
-			this->btnLuzSala->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
-			this->btnLuzSala->UseVisualStyleBackColor = false;
+			this->btnLuzSala->UseVisualStyleBackColor = true;
 			this->btnLuzSala->Click += gcnew System::EventHandler(this, &AppUsuario::btnLuzSala_Click);
 			// 
 			// lblPuertaEntrada
@@ -193,13 +185,9 @@ namespace AppCD {
 			// 
 			// btnEntradaPrincipal
 			// 
-			this->btnEntradaPrincipal->FlatAppearance->BorderSize = 0;
-			this->btnEntradaPrincipal->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->btnEntradaPrincipal->ForeColor = System::Drawing::SystemColors::Window;
-			this->btnEntradaPrincipal->Location = System::Drawing::Point(156, 105);
-			this->btnEntradaPrincipal->Margin = System::Windows::Forms::Padding(0);
+			this->btnEntradaPrincipal->Location = System::Drawing::Point(77, 126);
 			this->btnEntradaPrincipal->Name = L"btnEntradaPrincipal";
-			this->btnEntradaPrincipal->Size = System::Drawing::Size(62, 53);
+			this->btnEntradaPrincipal->Size = System::Drawing::Size(75, 23);
 			this->btnEntradaPrincipal->TabIndex = 7;
 			this->btnEntradaPrincipal->Text = L"ON";
 			this->btnEntradaPrincipal->UseVisualStyleBackColor = true;
@@ -208,7 +196,7 @@ namespace AppCD {
 			// lblLuzEstacionamiento
 			// 
 			this->lblLuzEstacionamiento->AutoSize = true;
-			this->lblLuzEstacionamiento->Location = System::Drawing::Point(113, 17);
+			this->lblLuzEstacionamiento->Location = System::Drawing::Point(74, 28);
 			this->lblLuzEstacionamiento->Name = L"lblLuzEstacionamiento";
 			this->lblLuzEstacionamiento->Size = System::Drawing::Size(105, 13);
 			this->lblLuzEstacionamiento->TabIndex = 8;
@@ -217,7 +205,7 @@ namespace AppCD {
 			// lblLCD
 			// 
 			this->lblLCD->AutoSize = true;
-			this->lblLCD->Location = System::Drawing::Point(129, 123);
+			this->lblLCD->Location = System::Drawing::Point(74, 72);
 			this->lblLCD->Name = L"lblLCD";
 			this->lblLCD->Size = System::Drawing::Size(68, 13);
 			this->lblLCD->TabIndex = 9;
@@ -225,14 +213,14 @@ namespace AppCD {
 			// 
 			// txbTextoLCD
 			// 
-			this->txbTextoLCD->Location = System::Drawing::Point(107, 139);
+			this->txbTextoLCD->Location = System::Drawing::Point(65, 88);
 			this->txbTextoLCD->Name = L"txbTextoLCD";
 			this->txbTextoLCD->Size = System::Drawing::Size(100, 20);
 			this->txbTextoLCD->TabIndex = 10;
 			// 
 			// btnEnviarLCD
 			// 
-			this->btnEnviarLCD->Location = System::Drawing::Point(107, 165);
+			this->btnEnviarLCD->Location = System::Drawing::Point(65, 114);
 			this->btnEnviarLCD->Name = L"btnEnviarLCD";
 			this->btnEnviarLCD->Size = System::Drawing::Size(100, 23);
 			this->btnEnviarLCD->TabIndex = 11;
@@ -252,7 +240,7 @@ namespace AppCD {
 			// 
 			// btnColorVerde
 			// 
-			this->btnColorVerde->Location = System::Drawing::Point(122, 44);
+			this->btnColorVerde->Location = System::Drawing::Point(90, 44);
 			this->btnColorVerde->Name = L"btnColorVerde";
 			this->btnColorVerde->Size = System::Drawing::Size(75, 23);
 			this->btnColorVerde->TabIndex = 14;
@@ -262,7 +250,7 @@ namespace AppCD {
 			// 
 			// btnColorAzul
 			// 
-			this->btnColorAzul->Location = System::Drawing::Point(260, 44);
+			this->btnColorAzul->Location = System::Drawing::Point(183, 44);
 			this->btnColorAzul->Name = L"btnColorAzul";
 			this->btnColorAzul->Size = System::Drawing::Size(75, 23);
 			this->btnColorAzul->TabIndex = 15;
@@ -305,7 +293,7 @@ namespace AppCD {
 			this->TablePanel->RowCount = 2;
 			this->TablePanel->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
 			this->TablePanel->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->TablePanel->Size = System::Drawing::Size(1033, 405);
+			this->TablePanel->Size = System::Drawing::Size(804, 341);
 			this->TablePanel->TabIndex = 18;
 			// 
 			// panel1
@@ -316,7 +304,7 @@ namespace AppCD {
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel1->Location = System::Drawing::Point(3, 3);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(338, 196);
+			this->panel1->Size = System::Drawing::Size(261, 164);
 			this->panel1->TabIndex = 0;
 			// 
 			// panel2
@@ -326,29 +314,19 @@ namespace AppCD {
 			this->panel2->Controls->Add(this->lblPuertaEntrada);
 			this->panel2->Controls->Add(this->btnEntradaPrincipal);
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel2->Location = System::Drawing::Point(347, 3);
+			this->panel2->Location = System::Drawing::Point(270, 3);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(338, 196);
+			this->panel2->Size = System::Drawing::Size(261, 164);
 			this->panel2->TabIndex = 1;
 			// 
 			// panel3
 			// 
 			this->panel3->Controls->Add(this->panel5);
 			this->panel3->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel3->Location = System::Drawing::Point(691, 3);
+			this->panel3->Location = System::Drawing::Point(537, 3);
 			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(339, 196);
+			this->panel3->Size = System::Drawing::Size(264, 164);
 			this->panel3->TabIndex = 2;
-			// 
-			// panel5
-			// 
-			this->panel5->Controls->Add(this->btnencendertodo);
-			this->panel5->Controls->Add(this->lblencendertodo);
-			this->panel5->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel5->Location = System::Drawing::Point(0, 0);
-			this->panel5->Name = L"panel5";
-			this->panel5->Size = System::Drawing::Size(339, 196);
-			this->panel5->TabIndex = 0;
 			// 
 			// panel4
 			// 
@@ -360,16 +338,26 @@ namespace AppCD {
 			this->panel4->Controls->Add(this->btnColorVerde);
 			this->panel4->Controls->Add(this->btnColorRojo);
 			this->panel4->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel4->Location = System::Drawing::Point(347, 205);
+			this->panel4->Location = System::Drawing::Point(270, 173);
 			this->panel4->Name = L"panel4";
-			this->panel4->Size = System::Drawing::Size(338, 197);
+			this->panel4->Size = System::Drawing::Size(261, 165);
 			this->panel4->TabIndex = 3;
+			// 
+			// panel5
+			// 
+			this->panel5->Controls->Add(this->btnencendertodo);
+			this->panel5->Controls->Add(this->lblencendertodo);
+			this->panel5->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->panel5->Location = System::Drawing::Point(0, 0);
+			this->panel5->Name = L"panel5";
+			this->panel5->Size = System::Drawing::Size(264, 164);
+			this->panel5->TabIndex = 0;
 			// 
 			// AppUsuario
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1033, 405);
+			this->ClientSize = System::Drawing::Size(804, 341);
 			this->Controls->Add(this->TablePanel);
 			this->Name = L"AppUsuario";
 			this->Text = L"AppUsuario";
@@ -379,10 +367,10 @@ namespace AppCD {
 			this->panel2->ResumeLayout(false);
 			this->panel2->PerformLayout();
 			this->panel3->ResumeLayout(false);
-			this->panel5->ResumeLayout(false);
-			this->panel5->PerformLayout();
 			this->panel4->ResumeLayout(false);
 			this->panel4->PerformLayout();
+			this->panel5->ResumeLayout(false);
+			this->panel5->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -396,26 +384,24 @@ private: System::Void btnConectar_Click(System::Object^ sender, System::EventArg
 	objComunicacion->arduino(); // Llama al método arduino de la instancia de Comunicacion
 }
 private: System::Void btnLuzSala_Click(System::Object^ sender, System::EventArgs^ e) {
-	/*if (objComunicacion->estaAbierto()) // Verifica si el puerto está abierto
-	{ */
-		//puerto = objComunicacion->obtenerPuerto(); // Obtiene el puerto desde la instancia de Comunicacion
+	if (objComunicacion->estaAbierto()) // Verifica si el puerto está abierto
+	{
+		puerto = objComunicacion->obtenerPuerto(); // Obtiene el puerto desde la instancia de Comunicacion
 		if (btnLuzSala->Text->Equals("ON"))
 		{
-			btnLuzSala->Image = Image::FromFile("D:\\Leon\\Documentos\\UCAD\\2025-2\\Diseño de software\\1er P\\Proyecto Casa Domotica\\Iconos\\Redimensionado\\Luz apagada.jpg");
 			btnLuzSala->Text = "OFF";  // Cambia el texto del botón a "ON"
-			//puerto->Write("a");  // Envía el valor 1 al puerto serie
+			puerto->Write("a");  // Envía el valor 1 al puerto serie
 		}
 		else
 		{
-			btnLuzSala->Image = Image::FromFile("D:\\Leon\\Documentos\\UCAD\\2025-2\\Diseño de software\\1er P\\Proyecto Casa Domotica\\Iconos\\Redimensionado\\Luz encendida.jpg");
 			btnLuzSala->Text = "ON";  // Cambia el texto del botón a "OFF"
-			//puerto->Write("d");  // Envía el valor 0 al puerto serie
+			puerto->Write("d");  // Envía el valor 0 al puerto serie
 		}
-	//}
-	/*else
+	}
+	else
 	{
 		MessageBox::Show("No se ha establecido una conexión con el puerto.");
-	}*/
+	}
 }
 private: System::Void btnEntradaPrincipal_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (objComunicacion->estaAbierto()) // Verifica si el puerto está abierto

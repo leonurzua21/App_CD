@@ -15,10 +15,9 @@ protected:
 		ObtenerDatos()
 	{
 		ts = gcnew SqlConnectionStringBuilder();
-		ts->DataSource = "34.51.35.63"; //Ip Google Cloud
+		ts->DataSource = "DESKTOP-GJGNJ95\\SQLEXPRESS";
 		ts->InitialCatalog = "Casa_dom";
-		ts->UserID = "Test";
-		ts->Password = "pbadatab2024!";
+		ts->IntegratedSecurity = "True";
 
 		connect = gcnew SqlConnection(Convert::ToString(ts));
 	}

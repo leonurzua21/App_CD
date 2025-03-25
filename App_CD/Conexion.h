@@ -16,7 +16,7 @@ protected:
     void Conectar()
 	{
 		st = gcnew SqlConnectionStringBuilder();
-        st->DataSource = "34.51.35.63"; //Google Cloud
+		st->DataSource = "192.168.1.73"; //Base de datos remota
 		st->InitialCatalog = "Casa_dom";
 		st->UserID = "Test";
 		st->Password = "pbadatab2024!";       
@@ -39,7 +39,7 @@ public:
         ejecutar->Parameters->AddWithValue("@pass",UserPass);
 
         conecta->Open();
-        ejecutar->ExecuteNonQuery(); //Agregar mensaje en caso de que se envien repetidos
+        ejecutar->ExecuteNonQuery();
         conecta->Close();
     }
 };
