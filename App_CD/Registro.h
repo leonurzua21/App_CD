@@ -129,6 +129,7 @@ namespace AppCD {
 			this->txbUserName->Size = System::Drawing::Size(130, 27);
 			this->txbUserName->TabIndex = 2;
 			this->toolTip1->SetToolTip(this->txbUserName, L"El nombre de usuario deberá ser de 10 caracteres alfanúmericos");
+			this->txbUserName->TextChanged += gcnew System::EventHandler(this, &Registro::txbUserName_TextChanged);
 			// 
 			// txbUserPass
 			// 
@@ -141,6 +142,7 @@ namespace AppCD {
 			this->txbUserPass->TabIndex = 3;
 			this->toolTip1->SetToolTip(this->txbUserPass, L"La contraseña deberá contener 10 caracteres alfanumericos, incluido un caracter e"
 				L"special");
+			this->txbUserPass->TextChanged += gcnew System::EventHandler(this, &Registro::txbUserPass_TextChanged);
 			// 
 			// btnCompletar
 			// 
@@ -275,8 +277,8 @@ namespace AppCD {
 		String^ UserName = txbUserName->Text;
 		String^ UserPass = txbUserPass->Text;
 
-		String^ patron_User = "^[0-9,A-z]{10}$";
-		String^ patron_Pass = "^[0-9,A-z]{9}([!#$%&.?¿]{1})$";
+		String^ patron_User = "^[a-zA-Z0-9]{10}$";
+		String^ patron_Pass = "^[0-9A-z(@!¡#$%&.?¿)]{10}$";
 
 		///*Regex^ regexUser = gcnew Regex(patron_User);
 		//Regex^ regexUser = gcnew Regex(patron_Pass);*/
@@ -313,5 +315,29 @@ namespace AppCD {
 			MessageBox::Show("Favor de llenar todos los campos ");
 		}
 	}
+//Metodo para validar el nombre de usuario, cambia el color del texto segun la expresion regular
+private: System::Void txbUserName_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	String^ patron_User = "^[a-zA-Z0-9]{10}$";
+	if (Regex::IsMatch(txbUserName->Text, patron_User)) 
+	{
+		txbUserName->ForeColor = System::Drawing::Color::Green;
+	}
+	else
+	{
+		txbUserName->ForeColor = System::Drawing::Color::Red;
+	}
+}
+//Metodo para validar el nombre de usuario, cambia el color del texto segun la expresion regular
+private: System::Void txbUserPass_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	String^ patron_Pass = "^[0-9A-z(@!¡#$%&.?¿)]{10}$";
+	if (Regex::IsMatch(txbUserPass->Text, patron_Pass))
+	{
+		txbUserPass->ForeColor = System::Drawing::Color::Green;
+	}
+	else
+	{
+		txbUserPass->ForeColor = System::Drawing::Color::Red;
+	}
+}
 };
 }
