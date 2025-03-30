@@ -443,7 +443,7 @@ private: System::Void btnEnviarLCD_Click(System::Object^ sender, System::EventAr
 	{
 		puerto = objComunicacion->obtenerPuerto(); // Obtiene el puerto desde la instancia de Comunicacion
 		puerto->Write("m" + mensajeLCD);
-		MessageBox::Show("Mensaje enviado: " + mensajeLCD); // Muestra el mensaje en un MessageBox
+		MessageBox::Show("Mensaje enviado: " + mensajeLCD); // Muestra el mensaje en un MessageBo
 	}
 	else
 	{
