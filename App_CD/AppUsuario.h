@@ -439,13 +439,11 @@ private: System::Void btnEntradaPrincipal_Click(System::Object^ sender, System::
 }
 private: System::Void btnEnviarLCD_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ mensajeLCD = txbTextoLCD->Text; // Obtiene el texto ingresado en el TextBox
-	puerto = objComunicacion->obtenerPuerto(); // Obtiene el puerto desde la instancia de Comunicacion
-
 	if (objComunicacion->estaAbierto()) // Verifica si el puerto está abierto
 	{
+		puerto = objComunicacion->obtenerPuerto(); // Obtiene el puerto desde la instancia de Comunicacion
+		puerto->Write("m" + mensajeLCD);
 		MessageBox::Show("Mensaje enviado: " + mensajeLCD); // Muestra el mensaje en un MessageBox
-		puerto->Write(mensajeLCD);
-		//puerto->Write("m");
 	}
 	else
 	{
