@@ -161,6 +161,10 @@
   <ItemGroup>
     <ResourceCompile Include="App_CD.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\x64\Debug\Images\Luz apagada.jpg" />
+    <Image Include="..\x64\Debug\Images\Luz encendida.jpg" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
