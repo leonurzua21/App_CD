@@ -402,14 +402,13 @@ private: System::Void btnLuzSala_Click(System::Object^ sender, System::EventArgs
 		if (btnLuzSala->Text->Equals("ON"))
 		{
 			//btnLuzSala->Image = Image::FromFile("D:\\Leon\\Documentos\\UCAD\\2025-2\\Diseño de software\\1er P\\Proyecto Casa Domotica\\Iconos\\Redimensionado\\Luz apagada.jpg");
-			btnLuzSala->Image = Image::FromFile("..\x64\Debug\Images\Luz apagada.jpg");
-			btnLuzSala->Image = gcnew System::Drawing::Bitmap("Luz apagada"); 
+			btnLuzSala->Image = Image::FromFile("..\\x64\\Debug\\Images\\Luz apagada.jpg");
 			btnLuzSala->Text = "OFF";  // Cambia el texto del botón a "ON"
 			//puerto->Write("a");  // Envía el valor 1 al puerto serie
 		}
 		else
 		{
-			btnLuzSala->Image = Image::FromFile("D:\\Leon\\Documentos\\UCAD\\2025-2\\Diseño de software\\1er P\\Proyecto Casa Domotica\\Iconos\\Redimensionado\\Luz encendida.jpg");
+			btnLuzSala->Image = Image::FromFile("..\\x64\\Debug\\Images\\Luz encendida.jpg");
 			btnLuzSala->Text = "ON";  // Cambia el texto del botón a "OFF"
 			//puerto->Write("d");  // Envía el valor 0 al puerto serie
 		}
