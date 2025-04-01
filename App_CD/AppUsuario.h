@@ -1,8 +1,8 @@
 #pragma once
 #include "Comunicacion.h"
 
-namespace AppCD {
 
+namespace AppCD {
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
