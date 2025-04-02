@@ -288,12 +288,12 @@ namespace AppCD {
 			if (Regex::IsMatch(UserName, patron_User) && Regex::IsMatch(UserPass, patron_Pass))
 			{
 
-				if (!Consultar::UsuarioExists(UserName)) //Verfica Si el usuario existe en la BD 
+				if (!Consultar::UsuarioExists(UserName)) //Verfica Si el usuario existe en la BD, si existe no se puede registrar al menos que elija otro nombre de usuario
 					//Metodo proveniente de la clase Consultar
 				{
 					conexion procesardatos;
 					procesardatos.Insertar(txbNombre->Text, txbApellido->Text, txbUserName->Text, txbUserPass->Text);
-					MessageBox::Show("Registro exitoso " + UserName + "\n" + "Ya puede cerrar esta ventana ");
+					MessageBox::Show("Registro exitoso " + UserName);
 					txbNombre->Clear();
 					txbApellido->Clear();
 					txbUserName->Clear();
@@ -308,7 +308,7 @@ namespace AppCD {
 			{
 				MessageBox::Show("Revise usuario y contraseña de nuevo");
 			}
-			
+			this->Close(); //Cierra el formulario de Registro
 		}
 		else
 		{

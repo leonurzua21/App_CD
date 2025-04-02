@@ -249,7 +249,10 @@ namespace AppCD {
 
 		if (!String::IsNullOrEmpty(User) && !String::IsNullOrEmpty(Pass)) //Compara la expresión regular con las cadenas de texto proporcionadas por el usuario
 		{
-			if (Consultar::CredencialesExists(User,Pass)) //Verfica Si el usuario existe en la BD
+			if (Consultar::CredencialesExists(User,Pass)) //Verfica si las credenciales existen en la BD
+				//Si existen, muestra un mensaje de bienvenida y abre el formulario de control de la casa domótica
+				//Metodo proveniente de la clase Consultar
+
 			{
 				MessageBox::Show("Bienvenid@ " + User);
 				txbUserName->Clear();
@@ -258,7 +261,7 @@ namespace AppCD {
 				AppCD::AppUsuario^ vistaprincipal = gcnew AppCD::AppUsuario();
 				vistaprincipal->Show(); //Muestra el formulario de control de la casa domotica
 				AppCD::Acceso^ ocultarformulario = gcnew AppCD::Acceso();
-				ocultarformulario->Close();
+				ocultarformulario->Close(); //Cierra el formulario de acceso
 			}
 			else
 			{

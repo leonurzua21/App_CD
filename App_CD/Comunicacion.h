@@ -14,7 +14,7 @@ public:
         puerto = nullptr; // Inicializamos como null para garantizar que no se abra por accidente
     }
     // Método para intentar conectar el puerto serie
-    bool arduino()
+    bool placa()
     {
         array<String^>^ puertosDisponibles = SerialPort::GetPortNames();
         array<SerialPort^>^ serialPorts = {
@@ -44,21 +44,21 @@ public:
                 }
                 catch (Exception^ ex)
                 {
-                    MessageBox::Show("Error al conectar: " + ex->Message);
+                    MessageBox::Show("Error al conectar, puerto ocupado: " + ex->Message);
                 }
             }
         }
 
         if (!conectado)
         {
-            MessageBox::Show("No se pudo conectar a ninguno de los puertos disponibles.");
+            //MessageBox::Show("No se pudo conectar a ninguno de los puertos disponibles.");
+			MessageBox::Show("No se encontró ninguna placa de desarrollo");
         }
 
         return conectado; // Retorna si la conexión fue exitosa
     }
 
     SerialPort^ obtenerPuerto() // Método para obtener el puerto conectado
-
     {
         return puerto; // Devuelve el puerto conectado
     }

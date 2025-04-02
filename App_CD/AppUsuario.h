@@ -50,8 +50,10 @@ namespace AppCD {
 		AppUsuario(void)
 		{
 			InitializeComponent();
+			//Se agregan los elementos a manera de arreglo para que el usuario los pueda visualizar al momento de inicializar el combobox "cboPlaca"
+			array<String^>^ desarrolladores = gcnew cli::array<String^>{ "Arduino Uno", "Arduino Leonardo", "ESP32" }; //Se pueden agregar más argumentos en el arreglo si desea agregar más placas de desarrollo ARDUINO
+			cboPlaca->Items->AddRange(desarrolladores); //Agrega los elementos declarados en arreglo al combobox
 			objComunicacion = gcnew Comunicacion(); // Inicializa la instancia de Comunicacion
-			
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -139,12 +141,10 @@ namespace AppCD {
 			// cboPlaca
 			// 
 			this->cboPlaca->FormattingEnabled = true;
-			this->cboPlaca->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Arduino Uno" });
 			this->cboPlaca->Location = System::Drawing::Point(25, 31);
 			this->cboPlaca->Name = L"cboPlaca";
 			this->cboPlaca->Size = System::Drawing::Size(121, 21);
 			this->cboPlaca->TabIndex = 2;
-			this->cboPlaca->SelectedIndexChanged += gcnew System::EventHandler(this, &AppUsuario::cboPlaca_SelectedIndexChanged);
 			// 
 			// btnConectar
 			// 
@@ -387,13 +387,18 @@ namespace AppCD {
 
 		}
 #pragma endregion
-private: System::Void cboPlaca_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {  
-	array<String^>^ desarrolladores = gcnew cli::array<String^> { "Arduino Uno","Arduino Leonardo"}; //Se pueden agregar más argumentos en el arreglo si desea agregar más placas de desarrollo ARDUINO
-	// Mostrar el valor seleccionado  
-	MessageBox::Show("Placa seleccionada: " + desarrolladores[0]); //Accede al elemento 0 del arreglo declarado
-}
 private: System::Void btnConectar_Click(System::Object^ sender, System::EventArgs^ e) {
-	objComunicacion->arduino(); // Llama al método arduino de la instancia de Comunicacion
+	if (objComunicacion->placa()) // Verifica si la placa esta conectada
+	{
+		if (cboPlaca->Text->Equals("")) //Si el usuario conecta la placa de desarrollo e intenta conectarla sin antes seleccionar una opción en el combobox, se aplica esta regla
+		{
+			MessageBox::Show("Seleccione una placa de desarrollo en lista");
+		}
+		else
+		{
+			MessageBox::Show("Placa seleccionada: " + cboPlaca->SelectedItem); //Accede al elemento seleccionado por el usuario
+		}
+	}
 }
 private: System::Void btnLuzSala_Click(System::Object^ sender, System::EventArgs^ e) {
 	/*if (objComunicacion->estaAbierto()) // Verifica si el puerto está abierto
@@ -463,7 +468,7 @@ private: System::Void btnColorRojo_Click(System::Object^ sender, System::EventAr
 		else
 		{
 			btnColorRojo->Text = "ROJO";  // Cambia el texto del botón a "OFF"
-			puerto->Write("r");  // Envía el valor 0 al puerto serie
+			puerto->Write("s");  // Envía el valor 0 al puerto serie
 		}
 	}
 	else
@@ -483,7 +488,7 @@ private: System::Void btnColorRojo_Click(System::Object^ sender, System::EventAr
 			else
 			{
 				btnColorVerde->Text = "VERDE";  // Cambia el texto del botón a "OFF"
-				puerto->Write("g");  // Envía el valor 0 al puerto serie
+				puerto->Write("w");  // Envía el valor 0 al puerto serie
 			}
 		}
 		else
@@ -503,7 +508,7 @@ private: System::Void btnColorAzul_Click(System::Object^ sender, System::EventAr
 		else
 		{
 			btnColorAzul->Text = "AZUL";  // Cambia el texto del botón a "OFF"
-			puerto->Write("b");  // Envía el valor 0 al puerto serie	
+			puerto->Write("q");  // Envía el valor 0 al puerto serie	
 		}
 	}
 	else
