@@ -37,14 +37,14 @@ public:
                         port->Open();
                         puerto = port; // Asignamos el puerto que se conectó
 						puerto->BaudRate = 115200; //Bits por segundo
-                        MessageBox::Show("Conexión exitosa a: " + puerto->PortName /*obtiene el nombre del puerto*/);
+                        MessageBox::Show("Conexión exitosa a: " + puerto->PortName, "Información", MessageBoxButtons::OK, MessageBoxIcon::Information /*obtiene el nombre del puerto*/);
                         conectado = true;
                         break;
                     }
                 }
                 catch (Exception^ ex)
                 {
-                    MessageBox::Show("Error al conectar, puerto ocupado: " + ex->Message);
+                    MessageBox::Show("Error al conectar, puerto ocupado: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
                 }
             }
         }
@@ -52,7 +52,7 @@ public:
         if (!conectado)
         {
             //MessageBox::Show("No se pudo conectar a ninguno de los puertos disponibles.");
-			MessageBox::Show("No se encontró ninguna placa de desarrollo");
+			MessageBox::Show("No se encontró ninguna placa de desarrollo", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
 
         return conectado; // Retorna si la conexión fue exitosa

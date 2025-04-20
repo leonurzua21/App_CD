@@ -233,7 +233,9 @@ namespace AppCD {
 			this->Controls->Add(this->btnAcceder);
 			this->Controls->Add(this->txbPass);
 			this->Controls->Add(this->txbUserName);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"Acceso";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Iniciar sesión";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pboLogoAcceso))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pboFlechaIniciosesion))->EndInit();
@@ -252,30 +254,28 @@ namespace AppCD {
 			if (Consultar::CredencialesExists(User,Pass)) //Verfica si las credenciales existen en la BD
 				//Si existen, muestra un mensaje de bienvenida y abre el formulario de control de la casa domótica
 				//Metodo proveniente de la clase Consultar
-
 			{
-				MessageBox::Show("Bienvenid@ " + User);
+				MessageBox::Show("Bienvenid@ " + User, "Información", MessageBoxButtons::OK, MessageBoxIcon::Information); //Muestra un mensaje de bienvenida
 				txbUserName->Clear();
 				txbPass->Clear(); //Limpia los campos de texto
 
-				AppCD::AppUsuario^ vistaprincipal = gcnew AppCD::AppUsuario();
-				vistaprincipal->Show(); //Muestra el formulario de control de la casa domotica
-				AppCD::Acceso^ ocultarformulario = gcnew AppCD::Acceso();
-				ocultarformulario->Close(); //Cierra el formulario de acceso
+				AppCD::AppUsuario^ vistaprincipalAppUsuario = gcnew AppCD::AppUsuario();
+				vistaprincipalAppUsuario->Show(); //Muestra el formulario de control de la casa domotica
 			}
 			else
 			{
-				MessageBox::Show("Usuario o contraseña incorrectos.\nSi no está registrado, haga clic en el botón de Registro.");
+				MessageBox::Show("Usuario o contraseña incorrectos.\nSi no está registrado, haga clic en el botón de Registro.",
+					"Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 		}
 		else
 		{
-			MessageBox::Show("Favor de llenar todos los campos");
+			MessageBox::Show("Favor de llenar todos los campos", "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		}
     }
 	private: System::Void btnRegistro_Click(System::Object^ sender, System::EventArgs^ e) {
-		AppCD::Registro^ form2 = gcnew AppCD::Registro();
-		form2->Show();
+		AppCD::Registro^ formularioRegistro = gcnew AppCD::Registro();
+		formularioRegistro->Show();
 	}
 };
 }

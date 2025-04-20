@@ -54,10 +54,12 @@ namespace AppCD {
 	private: System::Windows::Forms::Label^ lblApellidoUsuario;
 	private: System::Windows::Forms::Label^ lblUsuario;
 	private: System::Windows::Forms::Label^ lblContraseñaUsuario;
-	private: System::Windows::Forms::ToolTip^ toolTip1;
+
 	private: System::Windows::Forms::PictureBox^ pboLogoRegistro;
 	private: System::Windows::Forms::PictureBox^ pboFlechaRegistro;
 	private: System::Windows::Forms::Label^ lblRegistro;
+	private: System::Windows::Forms::Label^ lblAyudaNombreUsuario;
+	private: System::Windows::Forms::Label^ lblAyudaContraseñaUsuario;
 
 
 	private: System::ComponentModel::IContainer^ components;
@@ -80,7 +82,6 @@ namespace AppCD {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Registro::typeid));
 			this->txbNombre = (gcnew System::Windows::Forms::TextBox());
 			this->txbApellido = (gcnew System::Windows::Forms::TextBox());
@@ -91,10 +92,11 @@ namespace AppCD {
 			this->lblApellidoUsuario = (gcnew System::Windows::Forms::Label());
 			this->lblUsuario = (gcnew System::Windows::Forms::Label());
 			this->lblContraseñaUsuario = (gcnew System::Windows::Forms::Label());
-			this->toolTip1 = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->pboLogoRegistro = (gcnew System::Windows::Forms::PictureBox());
 			this->pboFlechaRegistro = (gcnew System::Windows::Forms::PictureBox());
 			this->lblRegistro = (gcnew System::Windows::Forms::Label());
+			this->lblAyudaNombreUsuario = (gcnew System::Windows::Forms::Label());
+			this->lblAyudaContraseñaUsuario = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pboLogoRegistro))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pboFlechaRegistro))->BeginInit();
 			this->SuspendLayout();
@@ -128,7 +130,6 @@ namespace AppCD {
 			this->txbUserName->Name = L"txbUserName";
 			this->txbUserName->Size = System::Drawing::Size(130, 27);
 			this->txbUserName->TabIndex = 2;
-			this->toolTip1->SetToolTip(this->txbUserName, L"El nombre de usuario deberá ser de 10 caracteres alfanúmericos");
 			this->txbUserName->TextChanged += gcnew System::EventHandler(this, &Registro::txbUserName_TextChanged);
 			// 
 			// txbUserPass
@@ -140,8 +141,6 @@ namespace AppCD {
 			this->txbUserPass->Name = L"txbUserPass";
 			this->txbUserPass->Size = System::Drawing::Size(130, 27);
 			this->txbUserPass->TabIndex = 3;
-			this->toolTip1->SetToolTip(this->txbUserPass, L"La contraseña deberá contener 10 caracteres alfanumericos, incluido un caracter e"
-				L"special");
 			this->txbUserPass->TextChanged += gcnew System::EventHandler(this, &Registro::txbUserPass_TextChanged);
 			// 
 			// btnCompletar
@@ -235,6 +234,7 @@ namespace AppCD {
 			// 
 			// lblRegistro
 			// 
+			this->lblRegistro->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->lblRegistro->AutoSize = true;
 			this->lblRegistro->Font = (gcnew System::Drawing::Font(L"Bahnschrift SemiCondensed", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -245,11 +245,36 @@ namespace AppCD {
 			this->lblRegistro->TabIndex = 12;
 			this->lblRegistro->Text = L"Registro";
 			// 
+			// lblAyudaNombreUsuario
+			// 
+			this->lblAyudaNombreUsuario->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->lblAyudaNombreUsuario->Font = (gcnew System::Drawing::Font(L"Bahnschrift SemiCondensed", 9, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->lblAyudaNombreUsuario->Location = System::Drawing::Point(428, 366);
+			this->lblAyudaNombreUsuario->Name = L"lblAyudaNombreUsuario";
+			this->lblAyudaNombreUsuario->Size = System::Drawing::Size(219, 34);
+			this->lblAyudaNombreUsuario->TabIndex = 13;
+			this->lblAyudaNombreUsuario->Text = L"El nombre de usuario deberá contener de 10 caracteres alfanúmericos";
+			// 
+			// lblAyudaContraseñaUsuario
+			// 
+			this->lblAyudaContraseñaUsuario->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->lblAyudaContraseñaUsuario->Font = (gcnew System::Drawing::Font(L"Bahnschrift SemiCondensed", 9, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->lblAyudaContraseñaUsuario->Location = System::Drawing::Point(428, 433);
+			this->lblAyudaContraseñaUsuario->Name = L"lblAyudaContraseñaUsuario";
+			this->lblAyudaContraseñaUsuario->Size = System::Drawing::Size(241, 35);
+			this->lblAyudaContraseñaUsuario->TabIndex = 14;
+			this->lblAyudaContraseñaUsuario->Text = L"La contraseña deberá contener 10 caracteres alfanumericos, incluido un caracter e"
+				L"special";
+			// 
 			// Registro
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(681, 513);
+			this->Controls->Add(this->lblAyudaContraseñaUsuario);
+			this->Controls->Add(this->lblAyudaNombreUsuario);
 			this->Controls->Add(this->lblRegistro);
 			this->Controls->Add(this->pboFlechaRegistro);
 			this->Controls->Add(this->pboLogoRegistro);
@@ -262,7 +287,9 @@ namespace AppCD {
 			this->Controls->Add(this->txbUserName);
 			this->Controls->Add(this->txbApellido);
 			this->Controls->Add(this->txbNombre);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"Registro";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Registro";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pboLogoRegistro))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pboFlechaRegistro))->EndInit();
@@ -272,71 +299,72 @@ namespace AppCD {
 		}
 #pragma endregion
 	private: System::Void btnCompletar_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ Nombre_usuario = txbNombre->Text;
-		String^ Apellido_usuario = txbApellido->Text;
-		String^ UserName = txbUserName->Text;
-		String^ UserPass = txbUserPass->Text;
+		String^ Nombre_usuario = txbNombre->Text; //Nombre del usuario
+		String^ Apellido_usuario = txbApellido->Text; //Apellido del usuario
+		String^ UserName = txbUserName->Text; //Username
+		String^ UserPass = txbUserPass->Text; //Contraseña del usuario
 
-		String^ patron_User = "^[a-zA-Z0-9]{10}$";
-		String^ patron_Pass = "^[0-9A-z(@!¡#$%&.?¿)]{10}$";
+		String^ patron_User = "^[a-zA-Z0-9]{10}$"; //Expresión regular para el nombre de usuario
+		String^ patron_Pass = "^(?=.*\\W)[A-Za-z0-9\\W]{10}$"; //Expresión regular para la contraseña
 
-		///*Regex^ regexUser = gcnew Regex(patron_User);
-		//Regex^ regexUser = gcnew Regex(patron_Pass);*/
-
-		if (!String::IsNullOrEmpty(Nombre_usuario) && !String::IsNullOrEmpty(Apellido_usuario) && !String::IsNullOrEmpty(UserName) && !String::IsNullOrEmpty(UserPass)) //Compara la expresión regular con las cadenas de texto proporcionadas por el usuario
+		if (!String::IsNullOrEmpty(Nombre_usuario) && !String::IsNullOrEmpty(Apellido_usuario) && !String::IsNullOrEmpty(UserName) &&
+			!String::IsNullOrEmpty(UserPass)) //Compara la expresión regular con las cadenas de texto proporcionadas por el usuario
 		{
-			if (Regex::IsMatch(UserName, patron_User) && Regex::IsMatch(UserPass, patron_Pass))
+			if (Regex::IsMatch(UserName, patron_User) && Regex::IsMatch(UserPass, patron_Pass)) //Verifica si el nombre de usuario y la contraseña cumplen con la expresión regular
 			{
+				//Si cumple con la expresión regular, se procede a verificar si el usuario existe en la base de datos
+				//Si no existe, se procede a insertar los datos en la base de datos
+				//Si existe, se muestra un mensaje indicando que el usuario ya existe
 
 				if (!Consultar::UsuarioExists(UserName)) //Verfica Si el usuario existe en la BD, si existe no se puede registrar al menos que elija otro nombre de usuario
 					//Metodo proveniente de la clase Consultar
 				{
-					conexion procesardatos;
-					procesardatos.Insertar(txbNombre->Text, txbApellido->Text, txbUserName->Text, txbUserPass->Text);
-					MessageBox::Show("Registro exitoso " + UserName);
+					conexion procesardatos; //Instancia de la clase conexion
+					procesardatos.Insertar(txbNombre->Text, txbApellido->Text, txbUserName->Text, txbUserPass->Text); //Inserta los datos en la base de datos
+					MessageBox::Show("Registro exitoso " + UserName, "Información", MessageBoxButtons::OK, MessageBoxIcon::Information); //Muestra un mensaje indicando que el registro fue exitoso
 					txbNombre->Clear();
 					txbApellido->Clear();
 					txbUserName->Clear();
 					txbUserPass->Clear(); //Limpia los campos de texto
+					this->Close(); //Cierra el formulario de Registro
 				}
 				else
 				{
-					MessageBox::Show("Usuario existente, elija otro");
+					MessageBox::Show("Usuario existente, elija otro", "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning); //Muestra un mensaje indicando que el usuario ya existe
 				}
 			}
 			else
 			{
-				MessageBox::Show("Revise usuario y contraseña de nuevo");
+				MessageBox::Show("Revise usuario y contraseña de nuevo", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error); //Muestra un mensaje indicando que el usuario o la contraseña no cumplen con la expresión regular
 			}
-			this->Close(); //Cierra el formulario de Registro
 		}
 		else
 		{
-			MessageBox::Show("Favor de llenar todos los campos ");
+			MessageBox::Show("Favor de llenar todos los campos" ,"Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning); //Muestra un mensaje indicando que se deben llenar todos los campos
 		}
 	}
 //Metodo para validar el nombre de usuario, cambia el color del texto segun la expresion regular
 private: System::Void txbUserName_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	String^ patron_User = "^[a-zA-Z0-9]{10}$";
-	if (Regex::IsMatch(txbUserName->Text, patron_User)) 
+	String^ patron_User = "^[a-zA-Z0-9]{10}$"; //Expresión regular para el nombre de usuario
+	if (Regex::IsMatch(txbUserName->Text, patron_User)) //Verifica si el nombre de usuario cumple con la expresión regular
 	{
-		txbUserName->ForeColor = System::Drawing::Color::Green;
+		txbUserName->ForeColor = System::Drawing::Color::Green; //Si cumple con la expresión regular, cambia el color del texto a verde
 	}
 	else
 	{
-		txbUserName->ForeColor = System::Drawing::Color::Red;
+		txbUserName->ForeColor = System::Drawing::Color::Red; //Si no cumple con la expresión regular, cambia el color del texto a rojo
 	}
 }
 //Metodo para validar el nombre de usuario, cambia el color del texto segun la expresion regular
 private: System::Void txbUserPass_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	String^ patron_Pass = "^[0-9A-z(@!¡#$%&.?¿)]{10}$";
-	if (Regex::IsMatch(txbUserPass->Text, patron_Pass))
+	String^ patron_Pass = "^(?=.*\\W)[A-Za-z0-9\\W]{10}$"; //Expresión regular para la contraseña
+	if (Regex::IsMatch(txbUserPass->Text, patron_Pass)) //Verifica si la contraseña cumple con la expresión regular
 	{
-		txbUserPass->ForeColor = System::Drawing::Color::Green;
+		txbUserPass->ForeColor = System::Drawing::Color::Green;	//Si cumple con la expresión regular, cambia el color del texto a verde
 	}
 	else
 	{
-		txbUserPass->ForeColor = System::Drawing::Color::Red;
+		txbUserPass->ForeColor = System::Drawing::Color::Red; //Si no cumple con la expresión regular, cambia el color del texto a rojo
 	}
 }
 };

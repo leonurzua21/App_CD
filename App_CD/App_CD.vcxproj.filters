@@ -65,12 +65,4 @@
       <Filter>Archivos de recursos</Filter>
     </ResourceCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\x64\Debug\Images\Luz apagada.jpg">
-      <Filter>Archivos de recursos</Filter>
-    </Image>
-    <Image Include="..\x64\Debug\Images\Luz encendida.jpg">
-      <Filter>Archivos de recursos</Filter>
-    </Image>
-  </ItemGroup>
 </Project>
