@@ -664,6 +664,7 @@ private: System::Void btnEnviarLCD_Click(System::Object^ sender, System::EventAr
 		puerto = objComunicacion->obtenerPuerto(); // Obtiene el puerto desde la instancia de Comunicacion
 		puerto->Write("m" + mensajeLCD);
 		MessageBox::Show("Mensaje enviado: " + mensajeLCD, "Información", MessageBoxButtons::OK, MessageBoxIcon::Information); // Muestra el mensaje en un MessageBo
+		txbTextoLCD->Clear(); // Limpia el TextBox después de enviar el mensaje
 	}
 	else
 	{
@@ -765,16 +766,16 @@ private: System::Void btnVentiladorPasillo_Click(System::Object^ sender, System:
 	if (objComunicacion->estaAbierto()) // Verifica si el puerto está abierto
 	{
 		puerto = objComunicacion->obtenerPuerto(); // Obtiene el puerto desde la instancia de Comunicacion
-		if (btnVentiladorSala->Text->Equals("ON"))
+		if (btnVentiladorPasillo->Text->Equals("ON"))
 		{
-			btnVentiladorSala->Image = Image::FromFile(VentiladorApagado);
-			btnVentiladorSala->Text = "OFF";  // Cambia el texto del botón a "ON"
+			btnVentiladorPasillo->Image = Image::FromFile(VentiladorApagado);
+			btnVentiladorPasillo->Text = "OFF";  // Cambia el texto del botón a "ON"
 			puerto->Write("t");  // Envía el valor n al puerto serie
 		}
 		else
 		{
-			btnVentiladorSala->Image = Image::FromFile(VentiladorEncendido);
-			btnVentiladorSala->Text = "ON";  // Cambia el texto del botón a "OFF"
+			btnVentiladorPasillo->Image = Image::FromFile(VentiladorEncendido);
+			btnVentiladorPasillo->Text = "ON";  // Cambia el texto del botón a "OFF"
 			puerto->Write("u");  // Envía el valor o al puerto serie
 		}
 	}
