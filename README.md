@@ -1,0 +1,1 @@
+Aplicación desarrollada en C++, permite la conexión entre una placa arduino UNO R3 y componentes como sensores, leds, motores para su ejecución en tiempo real y correcto funcionamiento de una casa domótica. 
